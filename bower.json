@@ -1,0 +1,23 @@
+{
+  "name": "od",
+  "version": "0.0.1",
+  "authors": [
+    "Freyr <freyr@diybdsm.com>"
+  ],
+  "description": "od",
+  "main": "app.js",
+  "license": "Public Domain",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.*",
+    "font-awesome": "~4.1.*",
+    "jquery.easy-pie-chart": "~2.1.*"
+  }
+}

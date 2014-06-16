@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+
+            <div class="header">
+                <h3>Stats</h3>
+            </div>
+
+
+            <div class="panel-group toppad2" id="stats">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#stats" href="#orgasmStats">
+                                Orgasms
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="orgasmStats" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>DateTime</th>
+                                            <th>Stuff</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% _.each(olog, function(l) { %>
+                                        <tr>
+                                            <td><%= l.typeName() %></td>
+                                            <td><%= l.formattedDate() %></td>
+                                            <td><%= moment(l.date).fromNow() %></td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+
+                                </table>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#stats" href="#chastityStats">
+                                Chastity
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="chastityStats" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Chastity Stats
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#stats" href="#arousalStats">
+                                Arousal
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="arousalStats" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Arousal Stats
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#stats" href="#punishmentStats">
+                                Punishments
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="punishmentStats" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Punishment Stats
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#stats" href="#teaseStats">
+                                Teases
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="teaseStats" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Tease Stats
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#stats" href="#taskStats">
+                                Tasks
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="taskStats" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Task Stats
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
