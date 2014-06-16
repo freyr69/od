@@ -6,11 +6,15 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
-module.exports = {
+var moment = require('moment');
 
-  attributes: {
-    date: 'DATETIME',
-    level: 'INTEGER'	
-  }
+module.exports = {
+    attributes: {
+        date: 'DATETIME',
+        level: 'INTEGER',
+        formattedDate: function() {
+            return moment(this.date).format('MM/DD/YYYY HH:mm:ss');
+        }
+    }
 
 };

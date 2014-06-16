@@ -6,9 +6,9 @@
                 <h3>Stats</h3>
 
                 <ul class="list-inline">
-                    <li class="active"><a href="/stats/orgasm">Orgasms</a></li>
+                    <li class=""><a href="/stats/orgasm">Orgasms</a></li>
                     <li class=""><a href="/stats/chastity">Chastity</a></li>
-                    <li class=""><a href="/stats/arousal">Arousal</a></li>
+                    <li class="active"><a href="/stats/arousal">Arousal</a></li>
                 </ul>
             </div>
 
@@ -18,17 +18,15 @@
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
-                                <th>Type</th>
-                                <th>DateTime</th>
-                                <th>Time Since</th>
+                                <th>Date</th>
+                                <th>Level</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% _.each(log, function(l) { %>
                             <tr>
-                                <td><%= l.typeName() %></td>
                                 <td><%= l.formattedDate() %></td>
-                                <td><%= moment(l.date).fromNow() %></td>
+                                <td><%= l.level %></td>
                             </tr>
                             <% }) %>
                         </tbody>
