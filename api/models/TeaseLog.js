@@ -12,6 +12,7 @@ module.exports = {
         title: 'STRING',
         description: 'TEXT',
         severity: 'INTEGER',
+        inChastity: 'BOOLEAN',
         start: 'DATETIME',
         end: 'DATETIME'
     }
