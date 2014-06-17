@@ -7,12 +7,12 @@
  */
 
 module.exports = {
-
-  attributes: {
-    title: 'STRING',
-    description: 'TEXT',
-    minDuration: 'INTEGER',
-    maxDuration: 'INTEGER'	
-  }
+    attributes: {
+        title: 'STRING',
+        description: 'TEXT',
+        schedule: 'STRING',
+        minDuration: 'INTEGER',
+        maxDuration: 'INTEGER'
+    }
 
 };

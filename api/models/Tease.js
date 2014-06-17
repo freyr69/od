@@ -7,10 +7,10 @@
  */
 
 module.exports = {
-
-  attributes: {
-    title: 'STRING',
-    description: 'TEXT'	
-  }
+    attributes: {
+        title: 'STRING',
+        description: 'TEXT',
+        allowChastity: 'BOOLEAN'
+    }
 
 };

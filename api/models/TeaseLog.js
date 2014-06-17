@@ -7,11 +7,13 @@
  */
 
 module.exports = {
-
-  attributes: {
-    teaseId: 'INTEGER',
-    start: 'DATETIME',
-    end: 'DATETIME'	
-  }
+    attributes: {
+        teaseId: 'INTEGER',
+        title: 'STRING',
+        description: 'TEXT',
+        severity: 'INTEGER',
+        start: 'DATETIME',
+        end: 'DATETIME'
+    }
 
 };

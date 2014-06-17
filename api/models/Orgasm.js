@@ -7,12 +7,11 @@
  */
 
 module.exports = {
-
-  attributes: {
-    nextOrgasmDate: {
-      type: 'DATETIME',
-      required: true
+    attributes: {
+        nextOrgasmDate: {
+            type: 'DATETIME',
+            required: true
+        }
     }
-  }
 
 };

@@ -7,14 +7,16 @@
  */
 
 module.exports = {
-
-  attributes: {
-    punishmentId: 'INTEGER',
-    assigned: 'DATETIME',
-    maxStart: 'DATETIME',
-    maxEnd: 'DATETIME',
-    start: 'DATETIME',
-    end: 'DATETIME'	
-  }
+    attributes: {
+        punishmentId: 'INTEGER',
+        title: 'STRING',
+        description: 'TEXT',
+        severity: 'INTEGER',
+        assigned: 'DATETIME',
+        maxStart: 'DATETIME',
+        maxEnd: 'DATETIME',
+        start: 'DATETIME',
+        end: 'DATETIME'
+    }
 
 };

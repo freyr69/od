@@ -7,14 +7,14 @@
  */
 
 module.exports = {
-
-  attributes: {
-    taskId: 'INTEGER',
-    assigned: 'DATETIME',
-    maxStart: 'DATETIME',
-    maxEnd: 'DATETIME',
-    start: 'DATETIME',
-    end: 'DATETIME'	
-  }
-
+    attributes: {
+        taskId: 'INTEGER',
+        title: 'STRING',
+        description: 'TEXT',
+        assigned: 'DATETIME',
+        maxStart: 'DATETIME',
+        maxEnd: 'DATETIME',
+        start: 'DATETIME',
+        end: 'DATETIME'
+    }
 };
