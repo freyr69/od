@@ -1,0 +1,19 @@
+<h2 class="text-info">Details</h2>
+<fieldset>
+    <legend>tease</legend>
+
+	
+		<label for="title">title:</label>
+		<p><%- tease.title %></p>
+	
+		<label for="description">description:</label>
+		<p><%- tease.description %></p>
+	
+		<label for="allowChastity">allowChastity:</label>
+		<p><%- tease.allowChastity %></p>
+	
+
+<%- link_to('edit', '/tease/edit/'+tease.id, {class : 'btn btn-warning'}) %>
+</fieldset>
+
+<%- link_to('back to list', '/tease', {class : 'btn btn-primary'}) %>

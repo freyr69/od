@@ -1,5 +1,5 @@
 module.exports = {
-	debug: {
+    debug: {
         tasks: ['nodemon', 'watch', 'open'],
         options: {
             logConcurrentOutput: true

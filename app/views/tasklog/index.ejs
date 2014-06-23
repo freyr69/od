@@ -1,0 +1,59 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>description</td>
+        	
+            	<td>severity</td>
+        	
+            	<td>assigned</td>
+        	
+            	<td>maxStart</td>
+        	
+            	<td>maxEnd</td>
+        	
+            	<td>start</td>
+        	
+            	<td>end</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% taskLogs.forEach(function(taskLog){ %>
+            <tr>
+                <td><%- taskLog.id %></td>
+                
+                    <td><%- taskLog.title %></td>
+                
+                    <td><%- taskLog.description %></td>
+                
+                    <td><%- taskLog.severity %></td>
+                
+                    <td><%- taskLog.assigned %></td>
+                
+                    <td><%- taskLog.maxStart %></td>
+                
+                    <td><%- taskLog.maxEnd %></td>
+                
+                    <td><%- taskLog.start %></td>
+                
+                    <td><%- taskLog.end %></td>
+                
+                <td>
+                    <%- link_to('show', '/taskLog/show/'+taskLog.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/taskLog/edit/'+taskLog.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/taskLog/delete/'+taskLog.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new taskLog', '/taskLog/new', {class : 'btn btn-primary'}) %>

@@ -1,0 +1,43 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>description</td>
+        	
+            	<td>minDuration</td>
+        	
+            	<td>maxDuration</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% punishments.forEach(function(punishment){ %>
+            <tr>
+                <td><%- punishment.id %></td>
+                
+                    <td><%- punishment.title %></td>
+                
+                    <td><%- punishment.description %></td>
+                
+                    <td><%- punishment.minDuration %></td>
+                
+                    <td><%- punishment.maxDuration %></td>
+                
+                <td>
+                    <%- link_to('show', '/punishment/show/'+punishment.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/punishment/edit/'+punishment.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/punishment/delete/'+punishment.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new punishment', '/punishment/new', {class : 'btn btn-primary'}) %>

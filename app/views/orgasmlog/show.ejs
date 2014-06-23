@@ -1,0 +1,16 @@
+<h2 class="text-info">Details</h2>
+<fieldset>
+    <legend>orgasmLog</legend>
+
+	
+		<label for="type">type:</label>
+		<p><%- orgasmLog.type %></p>
+	
+		<label for="date">date:</label>
+		<p><%- orgasmLog.date %></p>
+	
+
+<%- link_to('edit', '/orgasmLog/edit/'+orgasmLog.id, {class : 'btn btn-warning'}) %>
+</fieldset>
+
+<%- link_to('back to list', '/orgasmLog', {class : 'btn btn-primary'}) %>

@@ -1,0 +1,51 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>description</td>
+        	
+            	<td>severity</td>
+        	
+            	<td>inChastity</td>
+        	
+            	<td>start</td>
+        	
+            	<td>end</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% teaseLogs.forEach(function(teaseLog){ %>
+            <tr>
+                <td><%- teaseLog.id %></td>
+                
+                    <td><%- teaseLog.title %></td>
+                
+                    <td><%- teaseLog.description %></td>
+                
+                    <td><%- teaseLog.severity %></td>
+                
+                    <td><%- teaseLog.inChastity %></td>
+                
+                    <td><%- teaseLog.start %></td>
+                
+                    <td><%- teaseLog.end %></td>
+                
+                <td>
+                    <%- link_to('show', '/teaseLog/show/'+teaseLog.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/teaseLog/edit/'+teaseLog.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/teaseLog/delete/'+teaseLog.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new teaseLog', '/teaseLog/new', {class : 'btn btn-primary'}) %>

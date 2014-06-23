@@ -1,0 +1,13 @@
+<h2 class="text-info">Details</h2>
+<fieldset>
+    <legend>orgasm</legend>
+
+	
+		<label for="nextOrgasmDate">nextOrgasmDate:</label>
+		<p><%- orgasm.nextOrgasmDate %></p>
+	
+
+<%- link_to('edit', '/orgasm/edit/'+orgasm.id, {class : 'btn btn-warning'}) %>
+</fieldset>
+
+<%- link_to('back to list', '/orgasm', {class : 'btn btn-primary'}) %>

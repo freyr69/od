@@ -1,0 +1,18 @@
+<h2 class="text-success">Create orgasm</h2>
+
+<% form_for("orgasm", {controller: '/orgasm', action: '/create'}, function(f){ %>
+	
+	<%- f.hidden_field("id") %>
+	<%- hidden_field_tag("_csrf", {value: token}) %>
+
+	
+	  <div class="control-group">
+	    <%- f.label_for("nextOrgasmDate", {class : "control-label"}) %>
+	    <%- f.date("nextOrgasmDate", {class: "form-control"}) %>
+	  </div>
+	
+
+	<%- f.submit("Save", {class : 'btn btn-success'}) %>
+<% }) %>
+
+<%- link_to('back to list', '/orgasm', {class : 'btn btn-primary'}) %>

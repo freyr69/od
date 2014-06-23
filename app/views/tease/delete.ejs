@@ -1,0 +1,26 @@
+<h2 class="text-danger">Delete</h2>
+<fieldset>
+    <legend>tease</legend>
+    
+      
+            <label for="title">title:</label>
+            <p><%- tease.title %></p>
+      
+            <label for="description">description:</label>
+            <p><%- tease.description %></p>
+      
+            <label for="allowChastity">allowChastity:</label>
+            <p><%- tease.allowChastity %></p>
+      
+
+    <% form_for('tease', {controller : '/tease', action: '/delete'}, function(f){ %>
+        <%- f.hidden_field("id") %>
+        <%- hidden_field_tag("_csrf", {value: token}) %>
+        
+        <p>
+            <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+        </p>
+    <% }) %>
+</fieldset>
+
+<%- link_to('back to list', '/tease', {class : 'btn btn-primary'}) %>

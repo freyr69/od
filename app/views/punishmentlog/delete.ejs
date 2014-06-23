@@ -1,0 +1,41 @@
+<h2 class="text-danger">Delete</h2>
+<fieldset>
+    <legend>punishmentLog</legend>
+    
+      
+            <label for="title">title:</label>
+            <p><%- punishmentLog.title %></p>
+      
+            <label for="description">description:</label>
+            <p><%- punishmentLog.description %></p>
+      
+            <label for="severity">severity:</label>
+            <p><%- punishmentLog.severity %></p>
+      
+            <label for="assigned">assigned:</label>
+            <p><%- punishmentLog.assigned %></p>
+      
+            <label for="maxStart">maxStart:</label>
+            <p><%- punishmentLog.maxStart %></p>
+      
+            <label for="maxEnd">maxEnd:</label>
+            <p><%- punishmentLog.maxEnd %></p>
+      
+            <label for="start">start:</label>
+            <p><%- punishmentLog.start %></p>
+      
+            <label for="end">end:</label>
+            <p><%- punishmentLog.end %></p>
+      
+
+    <% form_for('punishmentLog', {controller : '/punishmentLog', action: '/delete'}, function(f){ %>
+        <%- f.hidden_field("id") %>
+        <%- hidden_field_tag("_csrf", {value: token}) %>
+        
+        <p>
+            <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+        </p>
+    <% }) %>
+</fieldset>
+
+<%- link_to('back to list', '/punishmentLog', {class : 'btn btn-primary'}) %>

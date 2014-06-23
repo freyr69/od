@@ -1,0 +1,59 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>description</td>
+        	
+            	<td>severity</td>
+        	
+            	<td>assigned</td>
+        	
+            	<td>maxStart</td>
+        	
+            	<td>maxEnd</td>
+        	
+            	<td>start</td>
+        	
+            	<td>end</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% punishmentLogs.forEach(function(punishmentLog){ %>
+            <tr>
+                <td><%- punishmentLog.id %></td>
+                
+                    <td><%- punishmentLog.title %></td>
+                
+                    <td><%- punishmentLog.description %></td>
+                
+                    <td><%- punishmentLog.severity %></td>
+                
+                    <td><%- punishmentLog.assigned %></td>
+                
+                    <td><%- punishmentLog.maxStart %></td>
+                
+                    <td><%- punishmentLog.maxEnd %></td>
+                
+                    <td><%- punishmentLog.start %></td>
+                
+                    <td><%- punishmentLog.end %></td>
+                
+                <td>
+                    <%- link_to('show', '/punishmentLog/show/'+punishmentLog.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/punishmentLog/edit/'+punishmentLog.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/punishmentLog/delete/'+punishmentLog.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new punishmentLog', '/punishmentLog/new', {class : 'btn btn-primary'}) %>

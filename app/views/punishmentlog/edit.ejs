@@ -1,0 +1,53 @@
+<h2 class="text-warning">Edit punishmentLog</h2>
+
+<% form_for("punishmentLog", {controller: '/punishmentLog', action: '/edit'}, function(f){ %>
+  
+  <%- f.hidden_field("id") %>
+  <%- hidden_field_tag("_csrf", {value: token}) %>
+
+  
+    <div class="control-group">
+      <%- f.label_for("title", {class : "control-label"}) %>
+      <%- f.text_field("title", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("description", {class : "control-label"}) %>
+      <%- f.text_area("description", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("severity", {class : "control-label"}) %>
+      <%- f.number_field("severity", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("assigned", {class : "control-label"}) %>
+      <%- f.date("assigned", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("maxStart", {class : "control-label"}) %>
+      <%- f.date("maxStart", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("maxEnd", {class : "control-label"}) %>
+      <%- f.date("maxEnd", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("start", {class : "control-label"}) %>
+      <%- f.date("start", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("end", {class : "control-label"}) %>
+      <%- f.date("end", {class: "form-control"}) %>
+    </div>
+  
+
+  <%- f.submit("Edit", {class : 'btn btn-warning'}) %>
+<% }) %>
+
+<%- link_to('back to list', '/punishmentLog', {class : 'btn btn-primary'}) %>

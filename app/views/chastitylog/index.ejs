@@ -1,0 +1,48 @@
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+
+            <div class="header">
+                <h3>Chastity</h3>
+            </div>
+
+            <div>
+                <div class="text-center">
+                    <div>
+
+                        <% if (inChastity) { %>
+                        <p>
+                            You've been in chastity for about <%= moment(startDate).fromNow(true) %>.
+                        </p>
+                        <p>
+                            <a href="/chastity/stop">Stop</a>
+                        </p>
+                        <% } else { %>
+                        <% if (lastDate === null) { %>
+                        <p>
+                            Looks like you've never been in chastity!!!!
+                        </p>
+                        <% } else { %>
+                        <p>
+                            Looks like you've been out of chastity for about <%= moment(lastDate).fromNow(true) %>.
+                        </p>
+                        <% } %>
+
+                        <p>
+                            You should really start a new session!.
+                        </p>
+                        <p>
+                            <a class="btn btn-info" href="/chastity/start">Start</a>
+                        </p>
+                        <% } %>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>                
+    </div>
+</div>
+

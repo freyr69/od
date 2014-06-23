@@ -1,0 +1,43 @@
+<h2 class="text-success">Create teaseLog</h2>
+
+<% form_for("teaseLog", {controller: '/teaseLog', action: '/create'}, function(f){ %>
+	
+	<%- f.hidden_field("id") %>
+	<%- hidden_field_tag("_csrf", {value: token}) %>
+
+	
+	  <div class="control-group">
+	    <%- f.label_for("title", {class : "control-label"}) %>
+	    <%- f.text_field("title", {class: "form-control"}) %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%- f.label_for("description", {class : "control-label"}) %>
+	    <%- f.text_area("description", {class: "form-control"}) %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%- f.label_for("severity", {class : "control-label"}) %>
+	    <%- f.number_field("severity", {class: "form-control"}) %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%- f.label_for("inChastity", {class : "control-label"}) %>
+	    <%- f.select("inChastity",[{"value":0,"text":"false"},{"value":1,"text":"true"}], {class: "form-control"}) %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%- f.label_for("start", {class : "control-label"}) %>
+	    <%- f.date("start", {class: "form-control"}) %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%- f.label_for("end", {class : "control-label"}) %>
+	    <%- f.date("end", {class: "form-control"}) %>
+	  </div>
+	
+
+	<%- f.submit("Save", {class : 'btn btn-success'}) %>
+<% }) %>
+
+<%- link_to('back to list', '/teaseLog', {class : 'btn btn-primary'}) %>

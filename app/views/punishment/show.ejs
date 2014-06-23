@@ -1,0 +1,22 @@
+<h2 class="text-info">Details</h2>
+<fieldset>
+    <legend>punishment</legend>
+
+	
+		<label for="title">title:</label>
+		<p><%- punishment.title %></p>
+	
+		<label for="description">description:</label>
+		<p><%- punishment.description %></p>
+	
+		<label for="minDuration">minDuration:</label>
+		<p><%- punishment.minDuration %></p>
+	
+		<label for="maxDuration">maxDuration:</label>
+		<p><%- punishment.maxDuration %></p>
+	
+
+<%- link_to('edit', '/punishment/edit/'+punishment.id, {class : 'btn btn-warning'}) %>
+</fieldset>
+
+<%- link_to('back to list', '/punishment', {class : 'btn btn-primary'}) %>

@@ -4,12 +4,13 @@ var express = require('express');
 /**
  * overide startsWith String prototype.
  */
-(function () {
-	if (typeof String.prototype.startsWith != 'function') {
-		String.prototype.startsWith = function(str) {
-			return this.substring(0, str.length) === str;
-		}
-	};
+(function() {
+    if (typeof String.prototype.startsWith != 'function') {
+        String.prototype.startsWith = function(str) {
+            return this.substring(0, str.length) === str;
+        }
+    }
+    ;
 })();
 
 /**
@@ -19,8 +20,8 @@ var express = require('express');
  * @param  {response}   res
  * @param  {Function} next
  */
-var csrf = function (req, res, next) {
-	(express.csrf())(req, res, next);
+var csrf = function(req, res, next) {
+    (express.csrf())(req, res, next);
 };
 
 /**
@@ -31,12 +32,12 @@ var csrf = function (req, res, next) {
  * @param  {Function} next [description]
  * @return {[type]}        [description]
  */
-var antiForgeryToken = function (req, res, next) {
-	res.locals.token = req.session._csrf;
-	next();
+var antiForgeryToken = function(req, res, next) {
+    res.locals.token = req.session._csrf;
+    next();
 };
 
 module.exports = {
-	csrf: csrf,
-	antiForgeryToken: antiForgeryToken
+    csrf: csrf,
+    antiForgeryToken: antiForgeryToken
 };

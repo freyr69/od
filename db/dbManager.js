@@ -3,28 +3,29 @@ var DbContext = require('./dbContext');
 /**
  * DbManager class.
  */
-(function(){
+(function() {
 
-	var dbContext = new DbContext();
-
-	/**
-	* Constructor.
-	*/
-	function DbManager(){
-
-	};
+    var dbContext = new DbContext();
 
     /**
-    * Database - models synchronization.
-    */
-    DbManager.prototype.synchronize = function () {
+     * Constructor.
+     */
+    function DbManager() {
+
+    }
+    ;
+
+    /**
+     * Database - models synchronization.
+     */
+    DbManager.prototype.synchronize = function() {
         dbContext.db.sync();
     };
 
     /**
-    * Drop all database tables.
-    */
-    DbManager.prototype.drop = function () {
+     * Drop all database tables.
+     */
+    DbManager.prototype.drop = function() {
         dbContext.db.drop();
     };
 
@@ -35,5 +36,5 @@ var DbContext = require('./dbContext');
         require('./dbFixtures')();
     };
 
-	module.exports = DbManager;
+    module.exports = DbManager;
 })();

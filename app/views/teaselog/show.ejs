@@ -1,0 +1,28 @@
+<h2 class="text-info">Details</h2>
+<fieldset>
+    <legend>teaseLog</legend>
+
+	
+		<label for="title">title:</label>
+		<p><%- teaseLog.title %></p>
+	
+		<label for="description">description:</label>
+		<p><%- teaseLog.description %></p>
+	
+		<label for="severity">severity:</label>
+		<p><%- teaseLog.severity %></p>
+	
+		<label for="inChastity">inChastity:</label>
+		<p><%- teaseLog.inChastity %></p>
+	
+		<label for="start">start:</label>
+		<p><%- teaseLog.start %></p>
+	
+		<label for="end">end:</label>
+		<p><%- teaseLog.end %></p>
+	
+
+<%- link_to('edit', '/teaseLog/edit/'+teaseLog.id, {class : 'btn btn-warning'}) %>
+</fieldset>
+
+<%- link_to('back to list', '/teaseLog', {class : 'btn btn-primary'}) %>

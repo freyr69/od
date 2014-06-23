@@ -1,0 +1,39 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>description</td>
+        	
+            	<td>allowChastity</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% teases.forEach(function(tease){ %>
+            <tr>
+                <td><%- tease.id %></td>
+                
+                    <td><%- tease.title %></td>
+                
+                    <td><%- tease.description %></td>
+                
+                    <td><%- tease.allowChastity %></td>
+                
+                <td>
+                    <%- link_to('show', '/tease/show/'+tease.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/tease/edit/'+tease.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/tease/delete/'+tease.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new tease', '/tease/new', {class : 'btn btn-primary'}) %>

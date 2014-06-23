@@ -1,0 +1,20 @@
+<h2 class="text-danger">Delete</h2>
+<fieldset>
+    <legend>orgasm</legend>
+    
+      
+            <label for="nextOrgasmDate">nextOrgasmDate:</label>
+            <p><%- orgasm.nextOrgasmDate %></p>
+      
+
+    <% form_for('orgasm', {controller : '/orgasm', action: '/delete'}, function(f){ %>
+        <%- f.hidden_field("id") %>
+        <%- hidden_field_tag("_csrf", {value: token}) %>
+        
+        <p>
+            <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+        </p>
+    <% }) %>
+</fieldset>
+
+<%- link_to('back to list', '/orgasm', {class : 'btn btn-primary'}) %>

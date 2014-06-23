@@ -1,0 +1,25 @@
+<h2 class="text-info">Details</h2>
+<fieldset>
+    <legend>task</legend>
+
+	
+		<label for="title">title:</label>
+		<p><%- task.title %></p>
+	
+		<label for="description">description:</label>
+		<p><%- task.description %></p>
+	
+		<label for="schedule">schedule:</label>
+		<p><%- task.schedule %></p>
+	
+		<label for="minDuration">minDuration:</label>
+		<p><%- task.minDuration %></p>
+	
+		<label for="maxDuration">maxDuration:</label>
+		<p><%- task.maxDuration %></p>
+	
+
+<%- link_to('edit', '/task/edit/'+task.id, {class : 'btn btn-warning'}) %>
+</fieldset>
+
+<%- link_to('back to list', '/task', {class : 'btn btn-primary'}) %>

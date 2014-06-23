@@ -1,0 +1,32 @@
+<h2 class="text-danger">Delete</h2>
+<fieldset>
+    <legend>task</legend>
+    
+      
+            <label for="title">title:</label>
+            <p><%- task.title %></p>
+      
+            <label for="description">description:</label>
+            <p><%- task.description %></p>
+      
+            <label for="schedule">schedule:</label>
+            <p><%- task.schedule %></p>
+      
+            <label for="minDuration">minDuration:</label>
+            <p><%- task.minDuration %></p>
+      
+            <label for="maxDuration">maxDuration:</label>
+            <p><%- task.maxDuration %></p>
+      
+
+    <% form_for('task', {controller : '/task', action: '/delete'}, function(f){ %>
+        <%- f.hidden_field("id") %>
+        <%- hidden_field_tag("_csrf", {value: token}) %>
+        
+        <p>
+            <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+        </p>
+    <% }) %>
+</fieldset>
+
+<%- link_to('back to list', '/task', {class : 'btn btn-primary'}) %>

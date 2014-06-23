@@ -1,5 +1,5 @@
 module.exports = {
-	default: {
-    	src: ["<%= config.public %>/**"]
-  	}
+    default: {
+        src: ["<%= config.public %>/**"]
+    }
 }

@@ -1,0 +1,28 @@
+<h2 class="text-warning">Edit tease</h2>
+
+<% form_for("tease", {controller: '/tease', action: '/edit'}, function(f){ %>
+  
+  <%- f.hidden_field("id") %>
+  <%- hidden_field_tag("_csrf", {value: token}) %>
+
+  
+    <div class="control-group">
+      <%- f.label_for("title", {class : "control-label"}) %>
+      <%- f.text_field("title", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("description", {class : "control-label"}) %>
+      <%- f.text_area("description", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("allowChastity", {class : "control-label"}) %>
+      <%- f.select("allowChastity",[{"value":0,"text":"false"},{"value":1,"text":"true"}], {class: "form-control"}) %>
+    </div>
+  
+
+  <%- f.submit("Edit", {class : 'btn btn-warning'}) %>
+<% }) %>
+
+<%- link_to('back to list', '/tease', {class : 'btn btn-primary'}) %>

@@ -1,0 +1,47 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>description</td>
+        	
+            	<td>schedule</td>
+        	
+            	<td>minDuration</td>
+        	
+            	<td>maxDuration</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% tasks.forEach(function(task){ %>
+            <tr>
+                <td><%- task.id %></td>
+                
+                    <td><%- task.title %></td>
+                
+                    <td><%- task.description %></td>
+                
+                    <td><%- task.schedule %></td>
+                
+                    <td><%- task.minDuration %></td>
+                
+                    <td><%- task.maxDuration %></td>
+                
+                <td>
+                    <%- link_to('show', '/task/show/'+task.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/task/edit/'+task.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/task/delete/'+task.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new task', '/task/new', {class : 'btn btn-primary'}) %>

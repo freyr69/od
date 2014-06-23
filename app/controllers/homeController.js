@@ -1,12 +1,12 @@
 /**
-* homeController class
-*/
-(function () {
+ * homeController class
+ */
+(function() {
 
     /**
-    * Constructor.
-    * @param {app} - express app.
-    */
+     * Constructor.
+     * @param {app} - express app.
+     */
     function HomeController(app) {
         this.routes(app);
     }

@@ -1,0 +1,23 @@
+<h2 class="text-warning">Edit orgasmLog</h2>
+
+<% form_for("orgasmLog", {controller: '/orgasmLog', action: '/edit'}, function(f){ %>
+  
+  <%- f.hidden_field("id") %>
+  <%- hidden_field_tag("_csrf", {value: token}) %>
+
+  
+    <div class="control-group">
+      <%- f.label_for("type", {class : "control-label"}) %>
+      <%- f.number_field("type", {class: "form-control"}) %>
+    </div>
+  
+    <div class="control-group">
+      <%- f.label_for("date", {class : "control-label"}) %>
+      <%- f.date("date", {class: "form-control"}) %>
+    </div>
+  
+
+  <%- f.submit("Edit", {class : 'btn btn-warning'}) %>
+<% }) %>
+
+<%- link_to('back to list', '/orgasmLog', {class : 'btn btn-primary'}) %>

@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+
+            <div class="header">
+                <h3>Next Orgasm</h3>
+                <p><%= moment(nextDate).format("YYYY/MM/DD hh:mm:ss") %></p>
+            </div>
+
+            <div>
+                <div class="text-center">
+                    <div class="chart easyPieChart" data-percent="<%= pct %>">
+                        <div><%= days %> Days</div>
+                    </div>
+                    <div class="toppad2">
+                        <a class="btn btn-warning" href="/orgasm/log/1">Masturbated</a>
+                        <a class="btn btn-primary" href="/orgasm/log/2">Wet Dream</a>
+                        <a class="btn btn-info" href="/orgasm/log/3">Sex</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="text-center">
+                    <p class="toppad">
+                        Your last orgasm was <strong><%= moment(lastDate).fromNow() %></strong> <br>
+                        and occurred on <strong><%= moment(lastDate).format("YYYY/MM/DD hh:mm:ss") %></strong>.
+                    </p>
+                    <p>
+                        You will have gone a total of <strong><%= total %></strong> days without an orgasm.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
