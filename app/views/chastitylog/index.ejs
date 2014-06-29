@@ -16,7 +16,7 @@
                             You've been in chastity for about <%= moment(startDate).fromNow(true) %>.
                         </p>
                         <p>
-                            <a href="/chastity/stop">Stop</a>
+                            <a class="btn btn-default" href="/chastity/stop">Stop</a>
                         </p>
                         <% } else { %>
                         <% if (lastDate === null) { %>
@@ -33,7 +33,7 @@
                             You should really start a new session!.
                         </p>
                         <p>
-                            <a class="btn btn-info" href="/chastity/start">Start</a>
+                            <a class="btn btn-default" href="/chastity/start">Start</a>
                         </p>
                         <% } %>
 

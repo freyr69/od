@@ -57,17 +57,17 @@ var moment = require('moment');
                 console.log("running last");
                 orgasmDAL.getPreviousOrgasmDate(callback);
             }
-        }, function(result) {
-            console.log("result = ", result);
+        }, function(err, results) {
+            console.log("result = ", results);
             
-            var days = moment(result.next).diff(moment(), 'days');
-            var total = moment(result.next).diff(moment(result.last), 'days');
-            var offset = moment().diff(moment(result.last), 'days');
+            var days = moment(results.next).diff(moment(), 'days');
+            var total = moment(results.next).diff(moment(results.last), 'days');
+            var offset = moment().diff(moment(results.last), 'days');
             var pct = Math.round((offset / total) * 100);
 
             res.render('orgasm/index', {
-                lastDate: result.last,
-                nextDate: result.next,
+                lastDate: results.last,
+                nextDate: results.next,
                 days: days,
                 total: total,
                 pct: pct,
