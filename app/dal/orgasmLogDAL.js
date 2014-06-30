@@ -90,7 +90,7 @@ var DbContext = require('../../db/dbContext');
      * @param  {Function} callback
      */
     orgasmLogDAL.prototype.getAll = function(callback) {
-        dbContext.orgasmLog.findAll({order: 'id DESC'}).success(function(orgasmLogs) {
+        dbContext.orgasmLog.findAll({order: 'date DESC'}).success(function(orgasmLogs) {
             callback(orgasmLogs);
         });
     };

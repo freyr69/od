@@ -20,6 +20,19 @@ var DbContext = require('../../db/dbContext');
 
     }
 
+
+    punishmentDAL.prototype.getRandom = function(callback) {
+        console.log("getting random punishment");
+        console.log(dbContext.db);
+        dbContext
+                .db
+                .query('SELECT * FROM `punishments` WHERE id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `punishments` ) ORDER BY id LIMIT 1;', dbContext.punishment)
+                .success(function(punishments) {
+                    console.log(punishments);
+                    callback(punishments);
+                });
+    };
+
     /**
      * get punishment by id
      * @param  {Integer}   punishmentId

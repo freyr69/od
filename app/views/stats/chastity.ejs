@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+
+            <div class="header">
+                <h3>Stats - Chastity</h3>
+
+                <ul class="list-inline">
+                    <li class=""><a href="/stats/orgasm">Orgasms</a></li>
+                    <li class="active"><a href="/stats/chastity">Chastity</a></li>
+                    <li class=""><a href="/stats/arousal">Arousal</a></li>
+                    <li class=""><a href="/stats/punishment">Punishments</a></li>
+                    <li class=""><a href="/stats/task">Tasks</a></li>
+                    <li class=""><a href="/stats/tease">Teases</a></li>
+                </ul>
+            </div>
+
+
+            <div class="toppad2">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% _.each(data, function(l) { %>
+                            <tr>
+                                <td><%= moment(l.start).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td>
+                                    <% if(l.end) { %>
+                                        <%= moment(l.end).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                    <% } else { %>
+                                    ------
+                                    <% } %>
+                                <td>
+                                    <% if(l.end) { %>
+                                    <%= moment.duration(moment(l.end).diff(moment(l.start))).humanize() %>
+                                    <% } else { %>
+                                    Ongoing
+                                    <% } %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+
+                    </table>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

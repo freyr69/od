@@ -23,7 +23,7 @@ var moment = require('moment');
 
     /**
      * Constructor.
-     * @param {app} - express app.
+     * @param {app} app - express app.
      */
     function OrgasmController(app) {
         this.routes(app);
@@ -31,7 +31,7 @@ var moment = require('moment');
 
     /**
      * orgasmController routes.
-     * @param {app} - express app.
+     * @param {app} app - express app.
      */
     OrgasmController.prototype.routes = function(app) {
         app.all('/orgasm*', membershipFilters.authorize, csrfFilters.csrf);
@@ -43,8 +43,8 @@ var moment = require('moment');
     /**
      * [httpget]
      * OrgasmController index action.
-     * @param {req} http request.
-     * @param {res} http response.
+     * @param {req} req http request.
+     * @param {res} res http response.
      */
     OrgasmController.prototype.index = function(req, res) {
 
@@ -59,7 +59,7 @@ var moment = require('moment');
             }
         }, function(err, results) {
             console.log("result = ", results);
-            
+
             var days = moment(results.next).diff(moment(), 'days');
             var total = moment(results.next).diff(moment(results.last), 'days');
             var offset = moment().diff(moment(results.last), 'days');
@@ -79,8 +79,8 @@ var moment = require('moment');
     /**
      * [httpget]
      * OrgasmController details action.
-     * @param {req} http request.
-     * @param {res} http response.
+     * @param {req} req http request.
+     * @param {res} res http response.
      */
     OrgasmController.prototype.log = function(req, res) {
         var type = req.params.type;

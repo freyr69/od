@@ -63,6 +63,12 @@ var DbContext = require('../../db/dbContext');
             callback({message: error});
         });
     };
+    
+    arousalDAL.prototype.getAll = function(callback) {
+        dbContext.arousal.findAll({order: 'date DESC'}).success(function(data) {
+            callback(data);
+        });
+    };
 
     module.exports = arousalDAL;
 })();

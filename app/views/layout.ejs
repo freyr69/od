@@ -1,55 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>microscopejs - MVC nodejs framework</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" type="text/css" href="/styles/application.css">
-    <link rel="stylesheet" type="text/css" href="/styles/animate.css">
-    <link rel="stylesheet" href="/styles/bootstrap.css" media="screen">
-  </head>
-  <body>
+    <head>
+        <title>Days</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+    </head>
+    <body>
 
-		<nav class="navbar navbar-default navbar-inverse navbar-static-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/">
-						<img src="/images/logo.png" style="width: 20px; margin:0; padding:0;"/> awesome_project
-					</a>
-				</div>
+        <div id="wrap">
+            <div class="container-fluid">
+                <% if(flash !== undefined && flash != ""){ %>
+                <div class="alert alert-warning"><%- flash %></div>
+                <% } %>
+                
+                <%- body %>
+            </div>
+        </div>
 
-				<div class="collapse navbar-collapse navbar-ex1-collapse">
-				    <ul class="nav navbar-nav">
-				    	<li><a href="http://microscopejs.com/documentation"><span class="glyphicon glyphicon-book"></span> documentation</a></li>
-                                        <li><a href="/arousal">Arousal</a></li>
-                                        <li><a href="/orgasm">Orgasm</a></li>
-                                        <li><a href="/chastity">Chastity</a></li>
-				    </ul>
-				    <ul class="nav navbar-nav navbar-right">
-				      	<%- partial('shared/_login') %>
-				    </ul>
-				</div>
-			</div>
-		</nav>
+        <div id="footer">
+            <div class="container-fluid">
+                <div class="row centered">
+                    <p>
+                        <a href="/orgasm">Orgasms</a> | 
+                        <a href="/chastity">Chastity</a> | 
+                        <a href="/arousal">Arousal Level</a> | 
+                        <a href="/punishment">Punishments</a> | 
+                        <a href="/stats">Stats</a>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-		<div class="container">
-			<div class="row">
-
-				<% if(flash !== undefined && flash != ""){ %>
-					<div class="alert alert-warning"><%- flash %></div>
-				<% } %>
-
-				<%- body %>
-			</div>
-		</div>
-
-	    <script src="/scripts/vendors/jquery.js"></script>
-	    <script src="/scripts/vendors/bootstrap.js"></script>
-  </body>
+        <script src="/scripts/vendors/jquery.js"></script>
+        <script src="/scripts/vendors/bootstrap.js"></script>
+        <script src="/scripts/vendors/jquery.easypiechart.js"></script>
+        <script src="/scripts/app.js"></script>
+    </body>
 </html>

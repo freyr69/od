@@ -40,6 +40,13 @@ var DbContext = require('../../db/dbContext');
             callback(punishmentLogs);
         });
     };
+    
+    
+    punishmentLogDAL.prototype.getActive = function(callback) {
+        dbContext.punishmentLog.findAll({where: 'end IS NULL', order: 'assigned DESC'}).success(function(punishmentLogs) {
+            callback(punishmentLogs);
+        });
+    };
 
     /**
      * save punishmentLog

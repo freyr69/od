@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+
+            <div class="header">
+                <h3>Stats - Orgasms</h3>
+
+                <ul class="list-inline">
+                    <li class="active"><a href="/stats/orgasm">Orgasms</a></li>
+                    <li class=""><a href="/stats/chastity">Chastity</a></li>
+                    <li class=""><a href="/stats/arousal">Arousal</a></li>
+                    <li class=""><a href="/stats/punishment">Punishments</a></li>
+                    <li class=""><a href="/stats/task">Tasks</a></li>
+                    <li class=""><a href="/stats/tease">Teases</a></li>
+                </ul>
+            </div>
+
+
+            <div class="toppad2">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>DateTime</th>
+                                <th>Time Since</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% _.each(data, function(l) { %>
+                            <tr>
+                                <td>
+                                    <% if (l.type == 1) { %>
+                                    Masturbated
+                                    <% } else if (l.type == 2) { %>
+                                    Wet Dream
+                                    <% } else if (l.type == 3) { %>
+                                    Sex
+                                    <% } else { %>
+                                    <%= l.type %>
+                                    <% } %>
+                                </td>
+                                <td><%= moment(l.date).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td><%= moment(l.date).fromNow() %></td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+
+                    </table>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

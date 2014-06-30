@@ -15,11 +15,8 @@
         "tests"
     ],
     "dependencies": {
-        "animate.css": "~2.1.0",
-        "jquery": "1.9.1",
-        "bootstrap": "~3.0.0",
-        "angular": "~1.0.8",
-        "requirejs": "~2.1.8",
-        "toastr": "~2.0.1"
+        "bootstrap": "~3.1.*",
+        "font-awesome": "~4.1.*",
+        "jquery.easy-pie-chart": "~2.1.*"
     }
 }

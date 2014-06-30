@@ -63,5 +63,11 @@ var DbContext = require('../../db/dbContext');
     };
 
 
+    chastityLogDAL.prototype.getAll = function(callback) {
+        dbContext.chastityLog.findAll({order: 'start DESC'}).success(function(data) {
+            callback(data);
+        });
+    };
+
     module.exports = chastityLogDAL;
 })();
