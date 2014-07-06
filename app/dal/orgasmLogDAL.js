@@ -73,6 +73,20 @@ var DbContext = require('../../db/dbContext');
     };
 
 
+    orgasmLogDAL.prototype.getCount = function(start, end, callback) {
+        dbContext.db.query('select count(*) as count from orgasmLogs where `date` between "' + start + '" and "' + end + '"' ).success(function(count) {
+            callback(count);
+        });
+    };
+    
+    orgasmLogDAL.prototype.getAggregate = function(start, end, callback) {
+        dbContext.db.query('select type, count(*) as count from orgasmLogs where `date` between "' + start + '" and "' + end + '" group by type' ).success(function(data) {
+            callback(data);
+        }).error(function(err) {
+            console.log("error:", err);
+            callback({});
+        });
+    };
 
     /**
      * get orgasmLog by id

@@ -5,6 +5,7 @@ module.exports = function(db, DataTypes) {
         description: DataTypes.TEXT,
         severity: DataTypes.INTEGER,
         inChastity: DataTypes.BOOLEAN,
+        assigned: DataTypes.DATE,
         start: DataTypes.DATE,
         end: DataTypes.DATE
     });

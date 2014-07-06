@@ -36,7 +36,7 @@ var DbContext = require('../../db/dbContext');
      * @param  {Function} callback
      */
     taskLogDAL.prototype.getAll = function(callback) {
-        dbContext.taskLog.findAll({order: 'id DESC'}).success(function(taskLogs) {
+        dbContext.taskLog.findAll({order: 'assigned DESC'}).success(function(taskLogs) {
             callback(taskLogs);
         });
     };

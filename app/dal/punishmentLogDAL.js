@@ -36,7 +36,7 @@ var DbContext = require('../../db/dbContext');
      * @param  {Function} callback
      */
     punishmentLogDAL.prototype.getAll = function(callback) {
-        dbContext.punishmentLog.findAll({order: 'id DESC'}).success(function(punishmentLogs) {
+        dbContext.punishmentLog.findAll({order: 'assigned DESC'}).success(function(punishmentLogs) {
             callback(punishmentLogs);
         });
     };

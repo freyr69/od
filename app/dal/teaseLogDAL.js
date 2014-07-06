@@ -36,7 +36,7 @@ var DbContext = require('../../db/dbContext');
      * @param  {Function} callback
      */
     teaseLogDAL.prototype.getAll = function(callback) {
-        dbContext.teaseLog.findAll({order: 'id DESC'}).success(function(teaseLogs) {
+        dbContext.teaseLog.findAll({order: 'assigned DESC'}).success(function(teaseLogs) {
             callback(teaseLogs);
         });
     };

@@ -15,8 +15,58 @@
                 </ul>
             </div>
 
+            <div class="well toppad2">
+                <p>
+                    Your last orgasm was <strong><%= moment(lastDate).fromNow() %></strong> 
+                    and occurred on <strong><%= moment(lastDate).format("YYYY/MM/DD hh:mm:ss") %></strong>.
+                </p>
+                <p>
+                    When you have your next scheduled orgasm, you will have gone a total of <strong><%= total %></strong> days without an cumming.
+                </p>
+                <p>
+                    You've had <strong><%= count %></strong> orgasms in the last 12 months.  That's about <strong><%= (count/12).toFixed(2) %></strong> orgasms per month.
+                </p>
+            </div>
+            
 
             <div class="toppad2">
+                <h4>Orgasms by Type</h4>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% _.each(aggregate, function(l) { %>
+                            <tr>
+                                <td>
+                                    <% if (l.type == 1) { %>
+                                    Masturbated
+                                    <% } else if (l.type == 2) { %>
+                                    Wet Dream
+                                    <% } else if (l.type == 3) { %>
+                                    Sex
+                                    <% } else { %>
+                                    <%= l.type %>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <%= l.count %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="toppad2">
+                <h4>Orgasm Listing</h4>
+                
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
