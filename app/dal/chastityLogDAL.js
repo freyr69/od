@@ -68,6 +68,25 @@ var DbContext = require('../../db/dbContext');
             callback(data);
         });
     };
+    
+    
+    chastityLogDAL.prototype.getMaxDuration = function(callback) {
+        dbContext.db.query('SELECT max(TIMESTAMPDIFF(SECOND, start, end)) as max from chastityLogs' ).success(function(data) {
+            callback(data[0].max);
+        });
+    };
+    
+    chastityLogDAL.prototype.getMinDuration = function(callback) {
+        dbContext.db.query('SELECT min(TIMESTAMPDIFF(SECOND, start, end)) as min from chastityLogs' ).success(function(data) {
+            callback(data[0].min);
+        });
+    };
+    
+    chastityLogDAL.prototype.getTotalDuration = function(callback) {
+        dbContext.db.query('SELECT sum(TIMESTAMPDIFF(SECOND, start, end)) as total from chastityLogs' ).success(function(data) {
+            callback(data[0].total);
+        });
+    };
 
     module.exports = chastityLogDAL;
 })();

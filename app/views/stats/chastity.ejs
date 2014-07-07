@@ -15,8 +15,19 @@
                 </ul>
             </div>
 
+            <div class="well toppad2">
+                <p>
+                    Your longest time in chastity was about <strong><%= moment.duration(max, "seconds").humanize() %></strong>.
+                    Your shortest time was about <strong><%= moment.duration(min, "seconds").humanize() %></strong>.
+                </p>
+                <p>
+                    You have spent a total of around <strong><%= moment.duration(total, "seconds").humanize() %></strong> in chastity since we started keeping track.
+                </p>
+            </div>
 
             <div class="toppad2">
+                <h4>Chastity Listing</h4>
+                
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>

@@ -124,11 +124,41 @@ var moment = require('moment');
      * @param  {response} res
      */
     statsController.prototype.chastity = function (req, res) {
-        chastityDAL.getAll(function (data) {
+        async.parallel({
+            max: function(callback) {
+                console.log("running max");
+                chastityDAL.getMaxDuration(function(data) {
+                    callback(null, data);
+                });
+            },
+            min: function(callback) {
+                console.log("running min");
+                chastityDAL.getMinDuration(function(data) {
+                    callback(null, data);
+                });
+            },
+            total: function(callback) {
+                console.log("running min");
+                chastityDAL.getTotalDuration(function(data) {
+                    callback(null, data);
+                });
+            },
+            list: function(callback) {
+                console.log("running list");
+                chastityDAL.getAll(function(data) {
+                    callback(null, data);
+                });
+            }
+        }, function(err, results) {
+            console.log("result = ", results);
+
             res.render('stats/chastity', {
-                data: data,
-                '_': _,
-                'moment': moment
+                data: results.list,
+                max: results.max,
+                min: results.min,
+                total: results.total,
+                moment: moment,
+                '_': _
             });
         });
     };
