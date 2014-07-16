@@ -1,4 +1,4 @@
-docs
+docs/annotated-source/
 bower_components
 
 
@@ -16,7 +16,7 @@ lib-cov
 *.gz
 
 pids
-logs
+logs/anno
 results
 
 node_modules
