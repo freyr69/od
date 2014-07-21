@@ -11,4 +11,4 @@ module.exports = function() {
     var dbContext = new DbContext();
 
     console.log("... running fixtures ...");
-}
+};

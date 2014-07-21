@@ -1,0 +1,25 @@
+<h2 class="text-info">Details</h2>
+<fieldset>
+    <legend>exerciseLog</legend>
+
+	
+		<label for="title">title:</label>
+		<p><%- exerciseLog.title %></p>
+	
+		<label for="sets">sets:</label>
+		<p><%- exerciseLog.sets %></p>
+	
+		<label for="reps">reps:</label>
+		<p><%- exerciseLog.reps %></p>
+	
+		<label for="start">start:</label>
+		<p><%- exerciseLog.start %></p>
+	
+		<label for="end">end:</label>
+		<p><%- exerciseLog.end %></p>
+	
+
+<%- link_to('edit', '/exerciseLog/edit/'+exerciseLog.id, {class : 'btn btn-warning'}) %>
+</fieldset>
+
+<%- link_to('back to list', '/exerciseLog', {class : 'btn btn-primary'}) %>

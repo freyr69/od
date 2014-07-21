@@ -30,6 +30,10 @@
         this.taskLog = this.db.import(modelsPath + 'taskLog');
         this.tease = this.db.import(modelsPath + 'tease');
         this.teaseLog = this.db.import(modelsPath + 'teaseLog');
+        this.food = this.db.import(modelsPath + 'food');
+        this.foodLog = this.db.import(modelsPath + 'foodLog');
+        this.exercise = this.db.import(modelsPath + 'exercise');
+        this.exerciseLog = this.db.import(modelsPath + 'exerciseLog');
     };
 
     /**

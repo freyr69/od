@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+            <div class="header">
+                <h3>Food - Delete</h3>
+            </div>
+            <div class="toppad2">
+                <fieldset>
+                    <legend>food</legend>
+
+
+                    <label for="title">title:</label>
+                    <p><%- food.title %></p>
+
+                    <label for="points">points:</label>
+                    <p><%- food.points %></p>
+
+
+                    <% form_for('food', {controller : '/food', action: '/delete'}, function(f){ %>
+                    <%- f.hidden_field("id") %>
+                    <%- hidden_field_tag("_csrf", {value: token}) %>
+
+                    <p>
+                        <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+                    </p>
+                    <% }) %>
+                </fieldset>
+
+            </div>
+        </div>        
+    </div>
+</div>
+

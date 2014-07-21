@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+            <div class="header">
+                <h3>Exercise - Create</h3>
+            </div>
+            <div class="toppad2">
+                <% form_for("exercise", {controller: '/exercise', action: '/create'}, function(f){ %>
+
+                <%- f.hidden_field("id") %>
+                <%- hidden_field_tag("_csrf", {value: token}) %>
+
+
+                <div class="control-group">
+                    <%- f.label_for("title", {class : "control-label"}) %>
+                    <%- f.text_field("title", {class: "form-control"}) %>
+                </div>
+
+                <div class="control-group">
+                    <%- f.label_for("minSets", {class : "control-label"}) %>
+                    <%- f.number_field("minSets", {class: "form-control"}) %>
+                </div>
+
+                <div class="control-group">
+                    <%- f.label_for("minReps", {class : "control-label"}) %>
+                    <%- f.number_field("minReps", {class: "form-control"}) %>
+                </div>
+
+
+                <%- f.submit("Save", {class : 'btn btn-success'}) %>
+                <% }) %>
+
+            </div>
+        </div>        
+    </div>
+</div>
+

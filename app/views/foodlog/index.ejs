@@ -1,0 +1,39 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>points</td>
+        	
+            	<td>date</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% foodLogs.forEach(function(foodLog){ %>
+            <tr>
+                <td><%- foodLog.id %></td>
+                
+                    <td><%- foodLog.title %></td>
+                
+                    <td><%- foodLog.points %></td>
+                
+                    <td><%- foodLog.date %></td>
+                
+                <td>
+                    <%- link_to('show', '/foodLog/show/'+foodLog.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/foodLog/edit/'+foodLog.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/foodLog/delete/'+foodLog.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new foodLog', '/foodLog/new', {class : 'btn btn-primary'}) %>

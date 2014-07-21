@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+            <div class="header">
+                <h3>Exercise - Delete</h3>
+            </div>
+            <div class="toppad2">
+                <fieldset>
+                    <legend>exercise</legend>
+
+
+                    <label for="title">title:</label>
+                    <p><%- exercise.title %></p>
+
+                    <label for="minSets">minSets:</label>
+                    <p><%- exercise.minSets %></p>
+
+                    <label for="minReps">minReps:</label>
+                    <p><%- exercise.minReps %></p>
+
+
+                    <% form_for('exercise', {controller : '/exercise', action: '/delete'}, function(f){ %>
+                    <%- f.hidden_field("id") %>
+                    <%- hidden_field_tag("_csrf", {value: token}) %>
+
+                    <p>
+                        <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+                    </p>
+                    <% }) %>
+                </fieldset>
+
+            </div>
+        </div>        
+    </div>
+</div>
+

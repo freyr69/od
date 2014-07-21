@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+            <div class="header">
+                <h3>Exercise - Admin</h3>
+            </div>
+            <div class="toppad2">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <td>Title</td>
+                                <td>Min Sets</td>
+                                <td>Min Reps</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% exercises.forEach(function(exercise){ %>
+                            <tr>
+                                <td><%- exercise.title %></td>
+                                <td><%- exercise.minSets %></td>
+                                <td><%- exercise.minReps %></td>
+                                <td>
+                                    <a href="<%- '/exercise/edit/'+exercise.id %>"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="<%- '/exercise/delete/'+exercise.id %>"><span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-primary" href="/exercise/new"><span class="glyphicon glyphicon-plus"></span> Add New...</a>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

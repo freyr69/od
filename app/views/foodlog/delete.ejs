@@ -1,0 +1,26 @@
+<h2 class="text-danger">Delete</h2>
+<fieldset>
+    <legend>foodLog</legend>
+    
+      
+            <label for="title">title:</label>
+            <p><%- foodLog.title %></p>
+      
+            <label for="points">points:</label>
+            <p><%- foodLog.points %></p>
+      
+            <label for="date">date:</label>
+            <p><%- foodLog.date %></p>
+      
+
+    <% form_for('foodLog', {controller : '/foodLog', action: '/delete'}, function(f){ %>
+        <%- f.hidden_field("id") %>
+        <%- hidden_field_tag("_csrf", {value: token}) %>
+        
+        <p>
+            <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+        </p>
+    <% }) %>
+</fieldset>
+
+<%- link_to('back to list', '/foodLog', {class : 'btn btn-primary'}) %>

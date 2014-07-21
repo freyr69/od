@@ -12,8 +12,7 @@ var DbContext = require('./dbContext');
      */
     function DbManager() {
 
-    }
-    ;
+    };
 
     /**
      * Database - models synchronization.

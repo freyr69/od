@@ -1,0 +1,32 @@
+<h2 class="text-danger">Delete</h2>
+<fieldset>
+    <legend>exerciseLog</legend>
+    
+      
+            <label for="title">title:</label>
+            <p><%- exerciseLog.title %></p>
+      
+            <label for="sets">sets:</label>
+            <p><%- exerciseLog.sets %></p>
+      
+            <label for="reps">reps:</label>
+            <p><%- exerciseLog.reps %></p>
+      
+            <label for="start">start:</label>
+            <p><%- exerciseLog.start %></p>
+      
+            <label for="end">end:</label>
+            <p><%- exerciseLog.end %></p>
+      
+
+    <% form_for('exerciseLog', {controller : '/exerciseLog', action: '/delete'}, function(f){ %>
+        <%- f.hidden_field("id") %>
+        <%- hidden_field_tag("_csrf", {value: token}) %>
+        
+        <p>
+            <%- f.submit("Delete", {class : 'btn btn-danger'}) %>
+        </p>
+    <% }) %>
+</fieldset>
+
+<%- link_to('back to list', '/exerciseLog', {class : 'btn btn-primary'}) %>

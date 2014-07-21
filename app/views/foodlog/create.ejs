@@ -1,0 +1,28 @@
+<h2 class="text-success">Create foodLog</h2>
+
+<% form_for("foodLog", {controller: '/foodLog', action: '/create'}, function(f){ %>
+	
+	<%- f.hidden_field("id") %>
+	<%- hidden_field_tag("_csrf", {value: token}) %>
+
+	
+	  <div class="control-group">
+	    <%- f.label_for("title", {class : "control-label"}) %>
+	    <%- f.text_field("title", {class: "form-control"}) %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%- f.label_for("points", {class : "control-label"}) %>
+	    <%- f.number_field("points", {class: "form-control"}) %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%- f.label_for("date", {class : "control-label"}) %>
+	    <%- f.date("date", {class: "form-control"}) %>
+	  </div>
+	
+
+	<%- f.submit("Save", {class : 'btn btn-success'}) %>
+<% }) %>
+
+<%- link_to('back to list', '/foodLog', {class : 'btn btn-primary'}) %>

@@ -1,0 +1,47 @@
+<h2 class="muted">Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            
+            	<td>title</td>
+        	
+            	<td>sets</td>
+        	
+            	<td>reps</td>
+        	
+            	<td>start</td>
+        	
+            	<td>end</td>
+        	
+          <td>action</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% exerciseLogs.forEach(function(exerciseLog){ %>
+            <tr>
+                <td><%- exerciseLog.id %></td>
+                
+                    <td><%- exerciseLog.title %></td>
+                
+                    <td><%- exerciseLog.sets %></td>
+                
+                    <td><%- exerciseLog.reps %></td>
+                
+                    <td><%- exerciseLog.start %></td>
+                
+                    <td><%- exerciseLog.end %></td>
+                
+                <td>
+                    <%- link_to('show', '/exerciseLog/show/'+exerciseLog.id, {class : 'btn btn-info'}) %> |
+                    <%- link_to('edit', '/exerciseLog/edit/'+exerciseLog.id, {class : 'btn btn-warning'}) %> |
+                    <%- link_to('delete', '/exerciseLog/delete/'+exerciseLog.id, {class : 'btn btn-danger'}) %>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- link_to('new exerciseLog', '/exerciseLog/new', {class : 'btn btn-primary'}) %>
