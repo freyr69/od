@@ -40,6 +40,8 @@
      * Manage Database entities associations here.
      */
     DbContext.prototype.modelBuilder = function() {
+        this.food.hasMany(this.foodLog, {as: "FoodLogs"});
+        this.foodLog.belongsTo(this.food);
     };
 
     module.exports = DbContext;

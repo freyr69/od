@@ -18,7 +18,7 @@ var DbContext = require('./dbContext');
      * Database - models synchronization.
      */
     DbManager.prototype.synchronize = function() {
-        dbContext.db.sync();
+        dbContext.db.sync({logging: console.log});
     };
 
     /**

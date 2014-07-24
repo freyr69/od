@@ -32,7 +32,6 @@ var csrfFilters = require('../filters/csrfFilters');
         app.all('/food*', csrfFilters.csrf);
 
         app.get('/food', this.index);
-        app.get('/food/show/:id', this.show);
         app.get('/food/new', csrfFilters.antiForgeryToken, this.new);
         app.post('/food/create', this.create);
         app.get('/food/edit/:id', csrfFilters.antiForgeryToken, this.edit);
@@ -107,7 +106,7 @@ var csrfFilters = require('../filters/csrfFilters');
         var food = req.body.food;
 
         foodDAL.save(food, function(data) {
-            res.redirect('/food');
+            res.redirect('/foodLog');
         });
     };
 

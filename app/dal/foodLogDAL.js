@@ -36,8 +36,32 @@ var DbContext = require('../../db/dbContext');
      * @param  {Function} callback
      */
     foodLogDAL.prototype.getAll = function(callback) {
-        dbContext.foodLog.findAll({order: 'id DESC'}).success(function(foodLogs) {
+        dbContext.foodLog.findAll({order: 'id DESC', include: [dbContext.food]}).success(function(foodLogs) {
             callback(foodLogs);
+        });
+    };
+
+    foodLogDAL.prototype.getAllBetween = function(start, end, callback) {
+        dbContext.foodLog.findAll({order: 'id DESC', where: ['`date` between "' + start + '" and "' + end + '"'], include: [dbContext.food]}).success(function(foodLogs) {
+            callback(foodLogs);
+        });
+    };
+
+    foodLogDAL.prototype.countPoints = function(start, end, callback) {
+        dbContext.db.query('select sum(foods.points) as points from foods, foodLogs where foods.id = foodLogs.foodId and foodLogs.`date` between "' + start + '" and "' + end + '"').success(function(points) {
+            callback(points);
+        });
+    };
+
+    foodLogDAL.prototype.addFood = function(food, callback) {
+        dbContext.foodLog.create({
+            date: new Date()
+        }).success(function(foodLog) {
+            food.addFoodLog(foodLog).success(function() {
+                callback(foodLog);
+            });
+        }).error(function(error) {
+            callback({message: error});
         });
     };
 

@@ -4,7 +4,10 @@
  * Module dependencies.
  */
 var FoodLogDAL = require('../dal/foodLogDAL');
+var FoodDAL = require('../dal/foodDAL');
 var csrfFilters = require('../filters/csrfFilters');
+var async = require('async');
+var moment = require('moment');
 
 /**
  * foodLogController class
@@ -15,6 +18,7 @@ var csrfFilters = require('../filters/csrfFilters');
      * Attributes.
      */
     var foodLogDAL = new FoodLogDAL();
+    var foodDAL = new FoodDAL();
 
     /**
      * Constructor.
@@ -31,7 +35,7 @@ var csrfFilters = require('../filters/csrfFilters');
     FoodLogController.prototype.routes = function(app) {
         app.all('/foodLog*', csrfFilters.csrf);
 
-        app.get('/foodLog', this.index);
+        app.get('/foodLog', csrfFilters.antiForgeryToken, this.index);
         app.post('/foodLog/create', this.create);
         app.get('/foodLog/delete/:id', csrfFilters.antiForgeryToken, this.delete);
         app.post('/foodLog/delete', this.destroy);
@@ -44,8 +48,37 @@ var csrfFilters = require('../filters/csrfFilters');
      * @param {res} http response.
      */
     FoodLogController.prototype.index = function(req, res) {
-        foodLogDAL.getAll(function(foodLogs) {
-            res.render('foodLog/index', {'foodLogs': foodLogs});
+        var startDate = new Date();
+        startDate.setHours(0, 0, 0, 0);
+        var endDate = new Date();
+        endDate.setHours(23, 59, 59, 999);
+
+        var start = moment(startDate).utc().format('YYYY-MM-DD HH:mm:ss');
+        var end = moment(endDate).utc().format('YYYY-MM-DD HH:mm:ss');
+
+        async.parallel({
+            foods: function(callback) {
+                foodDAL.getAll(function(data) {
+                    callback(null, data);
+                });
+            },
+            foodLogs: function(callback) {
+                foodLogDAL.getAllBetween(start, end, function(data) {
+                    callback(null, data);
+                });
+            },
+            points: function(callback) {
+                foodLogDAL.countPoints(start, end, function(data) {
+                    callback(null, data);
+                });
+            }
+        }, function(err, results) {
+            res.render('foodLog/index', {
+                foodLogs: results.foodLogs,
+                foods: results.foods,
+                points: results.points[0].points,
+                moment: moment
+            });
         });
     };
 
@@ -56,11 +89,12 @@ var csrfFilters = require('../filters/csrfFilters');
      * @param {res} http response.
      */
     FoodLogController.prototype.create = function(req, res) {
-        var foodLog = req.body.foodLog;
+        var foodId = req.body.food;
 
-        foodLog.date = new Date(foodLog.date.year, foodLog.date.month, foodLog.date.day);
-        foodLogDAL.save(foodLog, function(data) {
-            res.redirect('/foodLog');
+        foodDAL.get(foodId, function(food) {
+            foodLogDAL.addFood(food, function(data) {
+                res.redirect('/foodLog');
+            });
         });
     };
 

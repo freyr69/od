@@ -1,39 +1,50 @@
-<h2 class="muted">Index</h2>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <td>id</td>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+            <div class="header">
+                <h3>Food</h3>
+            </div>
+            <div class="toppad2">
+                <form method="post" action="/foodLog/create" class="form-inline">
+                    <input type="hidden" name="_csrf" value="<%= token %>" />
+                    <select id="food" name="food" class='form-control'>
+                        <% foods.forEach(function(food){ %>
+                        <option value="<%- food.id %>"><%- food.title %></option>
+                        <% }); %>
+                    </select>
+                    <input type="submit" value="Add" class="btn btn-success" />
+                    <a class="btn btn-primary" href="/food/new">New</a>
+                </form>
+            </div>
             
-            	<td>title</td>
-        	
-            	<td>points</td>
-        	
-            	<td>date</td>
-        	
-          <td>action</td>
-        </tr>
-    </thead>
-    <tbody>
+            <div class="toppad">
+                <h1><%- points %> <small>points</small></h1>
+            </div>
+            
+            <div class="toppad">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <td>Title</td>
+                                <td>Points</td>
+                                <td>Added</td>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-        <% foodLogs.forEach(function(foodLog){ %>
-            <tr>
-                <td><%- foodLog.id %></td>
-                
-                    <td><%- foodLog.title %></td>
-                
-                    <td><%- foodLog.points %></td>
-                
-                    <td><%- foodLog.date %></td>
-                
-                <td>
-                    <%- link_to('show', '/foodLog/show/'+foodLog.id, {class : 'btn btn-info'}) %> |
-                    <%- link_to('edit', '/foodLog/edit/'+foodLog.id, {class : 'btn btn-warning'}) %> |
-                    <%- link_to('delete', '/foodLog/delete/'+foodLog.id, {class : 'btn btn-danger'}) %>
-                </td>
-            </tr>
-        <% }); %>
-    </tbody>
-</table>
-
-<%- link_to('new foodLog', '/foodLog/new', {class : 'btn btn-primary'}) %>
+                            <% foodLogs.forEach(function(foodLog){ %>
+                            <tr>
+                                <td><%- foodLog.food.title %></td>
+                                <td><%- foodLog.food.points %></td>
+                                <td><%- foodLog.date %></td>
+                           </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

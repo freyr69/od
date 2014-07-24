@@ -34,7 +34,6 @@ var csrfFilters = require('../filters/csrfFilters');
         app.all('/exercise*', csrfFilters.csrf);
 
         app.get('/exercise', this.index);
-        app.get('/exercise/show/:id', this.show);
         app.get('/exercise/new', csrfFilters.antiForgeryToken, this.new);
         app.post('/exercise/create', this.create);
         app.get('/exercise/edit/:id', csrfFilters.antiForgeryToken, this.edit);

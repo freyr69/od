@@ -36,7 +36,7 @@ var DbContext = require('../../db/dbContext');
      * @param  {Function} callback
      */
     foodDAL.prototype.getAll = function(callback) {
-        dbContext.food.findAll({order: 'id DESC'}).success(function(foods) {
+        dbContext.food.findAll({order: 'title ASC'}).success(function(foods) {
             callback(foods);
         });
     };
