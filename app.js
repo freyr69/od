@@ -44,6 +44,40 @@ var Application = (function() {
 
         this.app.engine('ejs', engine);
         this.app.locals({_layoutFile: true});
+        
+        var thatapp = this.app;
+        
+        this.app.locals({
+            scripts: [],
+            inlineScripts: [],
+            renderScriptsTags: function(all) {
+                thatapp.locals.scripts = [];
+                if (all != undefined) {
+                    return all.map(function(script) {
+                        return '<script src="/scripts/' + script + '"></script>';
+                    }).join('\n ');
+                } else {
+                    return '';
+                }
+            },
+            getScripts: function(req, res) {
+                return scripts;
+            },
+            renderInlineScriptsTags: function(all) {
+                thatapp.locals.inlineScripts = [];
+                if (all != undefined) {
+                    return all.map(function(script) {
+                        return '<script>' + script + '</script>';
+                    }).join('\n ');
+                } else {
+                    return '';
+                }
+            },
+            getInlineScripts: function(req, res) {
+                return inlineScripts;
+            }
+        });
+        
         require('express-helpers')(this.app);
     };
 

@@ -1,22 +1,23 @@
 {
-    "name": "microscope_application",
-    "version": "0.0.1",
-    "homepage": "https://",
-    "authors": [
-        ""
-    ],
-    "license": "MIT",
-    "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "bootstrap": "~3.1.*",
-        "font-awesome": "~4.1.*",
-        "jquery.easy-pie-chart": "~2.1.*"
-    }
+  "name": "microscope_application",
+  "version": "0.0.1",
+  "homepage": "https://",
+  "authors": [
+    ""
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.*",
+    "font-awesome": "~4.1.*",
+    "jquery.easy-pie-chart": "~2.1.*",
+    "typeahead.js": "~0.10.4"
+  }
 }

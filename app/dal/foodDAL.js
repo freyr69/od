@@ -30,6 +30,12 @@ var DbContext = require('../../db/dbContext');
             callback(food);
         });
     };
+    
+    foodDAL.prototype.getByName = function(foodName, callback) {
+        dbContext.food.find({where: {title: foodName}}).success(function(food) {
+            callback(food);
+        });
+    };
 
     /**
      * get all food

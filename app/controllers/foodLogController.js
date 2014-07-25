@@ -89,9 +89,9 @@ var moment = require('moment');
      * @param {res} http response.
      */
     FoodLogController.prototype.create = function(req, res) {
-        var foodId = req.body.food;
+        var foodName = req.body.food;
 
-        foodDAL.get(foodId, function(food) {
+        foodDAL.getByName(foodName, function(food) {
             foodLogDAL.addFood(food, function(data) {
                 res.redirect('/foodLog');
             });

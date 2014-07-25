@@ -2998,7 +2998,8 @@ input[type="button"].btn-block {
 .dropdown-toggle:focus {
   outline: 0;
 }
-.dropdown-menu {
+.dropdown-menu,
+.tt-dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -3028,7 +3029,8 @@ input[type="button"].btn-block {
   overflow: hidden;
   background-color: #e5e5e5;
 }
-.dropdown-menu > li > a {
+.dropdown-menu > li > a,
+.tt-suggestion > p {
   display: block;
   padding: 3px 20px;
   clear: both;
@@ -3045,7 +3047,10 @@ input[type="button"].btn-block {
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
+.dropdown-menu > .active > a:focus,
+.tt-suggestion > p:hover,
+.tt-suggestion > p:focus,
+.tt-suggestion.tt-cursor > p {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
@@ -7423,6 +7428,9 @@ strong {
   font-weight: 300;
   color: #9dc9e1;
 }
+h1 small {
+  color: #76b4d5;
+}
 /*
 .btn-default {
   .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
@@ -7529,4 +7537,15 @@ strong {
   position: absolute;
   top: 0;
   left: 0;
+}
+.typeahead,
+.tt-query,
+.tt-hint {
+  width: 300px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-top: -6px;
+  outline: none;
 }

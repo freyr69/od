@@ -1,3 +1,16 @@
+
+<%
+var foodList = 'var foods = [';
+
+foods.forEach(function(food) {
+    foodList += "'" + food.title + "',";
+});
+
+foodList += ']';
+%>
+
+<% inlineScripts.push(foodList); %>
+
 <div class="row">
     <div class="col-md-6 col-md-offset-3 text-center">
         <div class="widget">
@@ -7,13 +20,19 @@
             <div class="toppad2">
                 <form method="post" action="/foodLog/create" class="form-inline">
                     <input type="hidden" name="_csrf" value="<%= token %>" />
+                    <!--
                     <select id="food" name="food" class='form-control'>
                         <% foods.forEach(function(food){ %>
                         <option value="<%- food.id %>"><%- food.title %></option>
                         <% }); %>
                     </select>
-                    <input type="submit" value="Add" class="btn btn-success" />
-                    <a class="btn btn-primary" href="/food/new">New</a>
+                    -->
+                    <div id="foods" class="">
+                        <input name="food" class="typeahead" class="" type="text" placeholder="What did you eat?">
+                        <input type="submit" value="Add" class="btn btn-success" />
+                        <a class="btn btn-primary" href="/food/new">New</a>
+                    </div>
+                    
                 </form>
             </div>
             
@@ -48,3 +67,6 @@
         </div>
     </div>
 </div>
+
+
+

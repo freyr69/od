@@ -1,0 +1,28 @@
+.typeahead, .tt-query, .tt-hint {
+    width: 300px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin-top: -6px;
+    outline: none;
+}
+
+.tt-dropdown-menu {
+	&:extend(.dropdown-menu);
+}
+
+.tt-suggestion {
+	> p {
+		&:extend(.dropdown-menu > li > a);
+		&:hover,
+		&:focus {
+			&:extend(.dropdown-menu > .active > a);
+		}
+	}
+	&.tt-cursor {
+		> p {
+			&:extend(.dropdown-menu > .active > a);
+		}
+	}
+}
