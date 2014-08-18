@@ -36,7 +36,7 @@ var Application = (function() {
     Application.prototype.configurations = function() {
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
-        this.app.use(express.static(path.join(__dirname, 'public')));
+        this.app.use(express.static(path.join(__dirname, 'public'), {maxAge: 86400000}));
 
         this.app.set('views', __dirname + '/app/views/');
         this.app.set('view engine', 'ejs');
@@ -44,9 +44,9 @@ var Application = (function() {
 
         this.app.engine('ejs', engine);
         this.app.locals({_layoutFile: true});
-        
+
         var thatapp = this.app;
-        
+
         this.app.locals({
             scripts: [],
             inlineScripts: [],
@@ -77,7 +77,7 @@ var Application = (function() {
                 return inlineScripts;
             }
         });
-        
+
         require('express-helpers')(this.app);
     };
 
@@ -104,7 +104,7 @@ var Application = (function() {
         this.app.use(express.session({secret: 'microscopejsbhtz'}));
         this.app.use(express.errorHandler());
 
-        this.app.use(require('./middleware/deviceHandler'));
+        //this.app.use(require('./middleware/deviceHandler'));
         this.app.use(passport.initialize());
         this.app.use(passport.session());
 
@@ -122,7 +122,7 @@ var Application = (function() {
         this.app.use(require('./middleware/errorHandler')({dumpExceptions: true, showStack: true}));
 
         var log4js = require('log4js');
-        log4js.configure('./configs/logger.json', {});
+        log4js.configure(__dirname + '/configs/logger.json', {});
         var logger = log4js.getLogger('file');
         logger.setLevel('INFO');
         this.app.use(log4js.connectLogger(logger));

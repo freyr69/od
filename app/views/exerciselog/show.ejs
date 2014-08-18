@@ -1,25 +1,32 @@
-<h2 class="text-info">Details</h2>
-<fieldset>
-    <legend>exerciseLog</legend>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+            <div class="header">
+                <h3>Exercise Log - Details - <small><%- link_to('edit', '/exerciseLog/edit/'+exerciseLog.id, {class : 'btn btn-warning'}) %></small></h3>
+            </div>
+        </div>
 
-	
-		<label for="title">title:</label>
-		<p><%- exerciseLog.title %></p>
-	
-		<label for="sets">sets:</label>
-		<p><%- exerciseLog.sets %></p>
-	
-		<label for="reps">reps:</label>
-		<p><%- exerciseLog.reps %></p>
-	
-		<label for="start">start:</label>
-		<p><%- exerciseLog.start %></p>
-	
-		<label for="end">end:</label>
-		<p><%- exerciseLog.end %></p>
-	
+        <div class="toppad2">
+            <fieldset>
+                <legend>Exercise Log</legend>
 
-<%- link_to('edit', '/exerciseLog/edit/'+exerciseLog.id, {class : 'btn btn-warning'}) %>
-</fieldset>
 
-<%- link_to('back to list', '/exerciseLog', {class : 'btn btn-primary'}) %>
+                <label for="title">title:</label>
+                <p><%- exerciseLog.title %></p>
+
+                <label for="sets">sets:</label>
+                <p><%- exerciseLog.sets %></p>
+
+                <label for="reps">reps:</label>
+                <p><%- exerciseLog.reps %></p>
+
+                <label for="start">start:</label>
+                <p><%- exerciseLog.start %></p>
+
+                <label for="end">end:</label>
+                <p><%- exerciseLog.end %></p>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
