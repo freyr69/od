@@ -1,5 +1,10 @@
 docs/annotated-source/
 bower_components
+logs/
+
+configs/database.json
+configs/logger.json
+
 
 
 
