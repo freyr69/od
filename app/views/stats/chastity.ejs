@@ -40,16 +40,16 @@
                         <tbody>
                             <% _.each(data, function(l) { %>
                             <tr>
-                                <td><%= moment(l.start).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td><%= moment.utc(l.start).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
                                 <td>
                                     <% if(l.end) { %>
-                                        <%= moment(l.end).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                        <%= moment.utc(l.end).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
                                     <% } else { %>
                                     ------
                                     <% } %>
                                 <td>
                                     <% if(l.end) { %>
-                                    <%= moment.duration(moment(l.end).diff(moment(l.start))).humanize() %>
+                                    <%= moment.duration(moment.utc(l.end).diff(moment.utc(l.start))).humanize() %>
                                     <% } else { %>
                                     Ongoing
                                     <% } %>

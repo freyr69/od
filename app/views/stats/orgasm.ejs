@@ -17,7 +17,7 @@
 
             <div class="well toppad2">
                 <p>
-                    Your last orgasm was <strong><%= moment(lastDate).fromNow() %></strong> 
+                    Your last orgasm was <strong><%= moment.utc(lastDate).tz('America/New_York').fromNow() %></strong> 
                     and occurred on <strong><%= moment(lastDate).format("YYYY/MM/DD hh:mm:ss") %></strong>.
                 </p>
                 <p>
@@ -90,8 +90,8 @@
                                     <%= l.type %>
                                     <% } %>
                                 </td>
-                                <td><%= moment(l.date).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
-                                <td><%= moment(l.date).fromNow() %></td>
+                                <td><%= moment.utc(l.date).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td><%= moment.utc(l.date).tz('America/New_York').fromNow() %></td>
                             </tr>
                             <% }) %>
                         </tbody>

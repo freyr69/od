@@ -7,7 +7,7 @@ var FoodLogDAL = require('../dal/foodLogDAL');
 var FoodDAL = require('../dal/foodDAL');
 var csrfFilters = require('../filters/csrfFilters');
 var async = require('async');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 /**
  * foodLogController class
@@ -93,7 +93,9 @@ var moment = require('moment');
 
         foodDAL.getByName(foodName, function(food) {
             foodLogDAL.addFood(food, function(data) {
-                res.redirect('/foodLog');
+                res.redirect('/foodLog', {
+                    moment: moment
+                });
             });
         });
     };
@@ -107,7 +109,7 @@ var moment = require('moment');
     FoodLogController.prototype.delete = function(req, res) {
         var foodLogId = req.params.id;
         foodLogDAL.get(foodLogId, function(foodLog) {
-            res.render('foodLog/delete', {'foodLog': foodLog});
+            res.render('foodLog/delete', {'foodLog': foodLog, moment: moment});
         });
     };
 
@@ -120,7 +122,7 @@ var moment = require('moment');
     FoodLogController.prototype.destroy = function(req, res) {
         var foodLog = req.body.foodLog;
         foodLogDAL.remove(foodLog.id, function(data) {
-            res.redirect('/foodLog');
+            res.redirect('/foodLog', {moment: moment});
         });
     };
 

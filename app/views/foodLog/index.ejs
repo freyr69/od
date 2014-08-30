@@ -56,7 +56,7 @@ foodList += ']';
                             <tr>
                                 <td><%- foodLog.food.title %></td>
                                 <td><%- foodLog.food.points %></td>
-                                <td><%- foodLog.date %></td>
+                                <td><%- moment.utc(foodLog.date).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
                            </tr>
                             <% }); %>
                         </tbody>

@@ -2,6 +2,7 @@
  * module dependencies
  */
 var DbContext = require('../../db/dbContext');
+var moment = require('moment');
 
 /**
  * chastityLogDAL class
@@ -26,8 +27,8 @@ var DbContext = require('../../db/dbContext');
             var chastity = logs[0];
             if (chastity === undefined) {
                 chastity = {
-                    start: new Date(),
-                    end: new Date()
+                    start: moment.utc(),
+                    end: moment.utc()
                 };
             }
             callback(chastity);
@@ -38,7 +39,7 @@ var DbContext = require('../../db/dbContext');
 
     chastityLogDAL.prototype.startSession = function(callback) {
         var chastityLog = dbContext.chastityLog.build({
-            start: new Date()
+            start: moment.utc()
         });
         chastityLog.save().success(function(chastityLog) {
             callback(chastityLog);
@@ -50,7 +51,7 @@ var DbContext = require('../../db/dbContext');
     chastityLogDAL.prototype.endSession = function(callback) {
         this.getLatest(function(log) {
             if (log.end === null) {
-                log.end = new Date();
+                log.end = new moment.utc();
                 log.save().success(function(chastityLog) {
                     callback(chastityLog);
                 }).error(function(error) {

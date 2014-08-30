@@ -4,7 +4,7 @@
 
             <div class="header">
                 <h3>Next Orgasm</h3>
-                <p><%= moment(nextDate).format("YYYY/MM/DD hh:mm:ss") %></p>
+                <p><%= moment.utc(nextDate).tz('America/New_York').format("YYYY/MM/DD hh:mm:ss") %></p>
             </div>
 
             <div>
@@ -23,8 +23,8 @@
             <div>
                 <div class="text-center">
                     <p class="toppad">
-                        Your last orgasm was <strong><%= moment(lastDate).fromNow() %></strong> <br>
-                        and occurred on <strong><%= moment(lastDate).format("YYYY/MM/DD hh:mm:ss") %></strong>.
+                        Your last orgasm was <strong><%= moment.utc(lastDate).tz('America/New_York').fromNow() %></strong> <br>
+                        and occurred on <strong><%= moment.utc(lastDate).tz('America/New_York').format("YYYY/MM/DD hh:mm:ss") %></strong>.
                     </p>
                     <p>
                         You will have gone a total of <strong><%= total %></strong> days without an orgasm.

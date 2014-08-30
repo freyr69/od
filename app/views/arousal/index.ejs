@@ -56,7 +56,7 @@
             <p>Your most recent arousal level was 
                 <span class="label label-<%= code %>"><%= arousal.level %></span>
 
-                recorded <%= moment(arousal.date).fromNow() %> on <%= moment(arousal.date).format('MM/DD/YYYY HH:mm:ss') %></p>
+                recorded <%= moment.utc(arousal.date).tz('America/New_York').fromNow() %> on <%= moment.utc(arousal.date).tz('America/New_York').format('MM/DD/YYYY HH:mm:ss') %></p>
 
         </div>
     </div>

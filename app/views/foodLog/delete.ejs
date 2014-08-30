@@ -10,7 +10,7 @@
             <p><%- foodLog.points %></p>
       
             <label for="date">date:</label>
-            <p><%- foodLog.date %></p>
+            <p><%- moment.utc(foodLog.date).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></p>
       
 
     <% form_for('foodLog', {controller : '/foodLog', action: '/delete'}, function(f){ %>

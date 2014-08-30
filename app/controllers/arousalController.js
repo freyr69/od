@@ -6,7 +6,7 @@
 var ArousalDAL = require('../dal/arousalDAL');
 var csrfFilters = require('../filters/csrfFilters');
 var membershipFilters = require('../filters/membershipFilters');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 /**
  * arousalController class

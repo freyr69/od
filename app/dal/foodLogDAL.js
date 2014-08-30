@@ -2,6 +2,7 @@
  * module dependencies
  */
 var DbContext = require('../../db/dbContext');
+var moment = require('moment-timezone');
 
 /**
  * foodLogDAL class
@@ -55,7 +56,7 @@ var DbContext = require('../../db/dbContext');
 
     foodLogDAL.prototype.addFood = function(food, callback) {
         dbContext.foodLog.create({
-            date: new Date()
+            date: moment.utc()
         }).success(function(foodLog) {
             food.addFoodLog(foodLog).success(function() {
                 callback(foodLog);

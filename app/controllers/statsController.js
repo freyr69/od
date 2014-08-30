@@ -8,7 +8,7 @@ var TeaseLogDAL = require('../dal/teaseLogDAL');
 
 var async = require('async');
 var _ = require('lodash');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 /**
  * statsController class

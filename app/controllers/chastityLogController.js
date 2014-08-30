@@ -6,7 +6,7 @@
 var ChastityLogDAL = require('../dal/chastityLogDAL');
 var csrfFilters = require('../filters/csrfFilters');
 var membershipFilters = require('../filters/membershipFilters');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 /**
  * chastityLogController class
@@ -64,7 +64,7 @@ var moment = require('moment');
      */
     ChastityLogController.prototype.start = function(req, res) {
         var chastityLog = {
-            start: new Date()
+            start: moment.utc()
         };
 
         chastityLogDAL.startSession(function(data) {

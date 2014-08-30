@@ -8,7 +8,7 @@ var OrgasmLogDAL = require('../dal/orgasmLogDAL');
 var csrfFilters = require('../filters/csrfFilters');
 var membershipFilters = require('../filters/membershipFilters');
 var async = require('async');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 /**
  * orgasmController class

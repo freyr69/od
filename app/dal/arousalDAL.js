@@ -2,6 +2,7 @@
  * module dependencies
  */
 var DbContext = require('../../db/dbContext');
+var moment = require('moment-timezone');
 
 /**
  * arousalDAL class
@@ -30,7 +31,7 @@ var DbContext = require('../../db/dbContext');
             if (arousal === undefined) {
                 arousal = {
                     level: 1,
-                    date: new Date()
+                    date: moment.utc()
                 };
             }
             callback(arousal);
@@ -54,7 +55,7 @@ var DbContext = require('../../db/dbContext');
         }
 
         var arousal = dbContext.arousal.build({
-            date: new Date(),
+            date: moment.utc(),
             level: level
         });
         arousal.save().success(function(arousal) {

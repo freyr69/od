@@ -35,16 +35,16 @@
                                 <td><%= l.title %></td>
                                 <td><%= l.description %></td>
                                 <td><%= l.severity %></td>
-                                <td><%= moment(l.assigned).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td><%= moment.utc(l.assigned).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
                                 <td>
                                     <% if (l.inChasity) { %>
                                         <i class="fa fa-check-square-o"></i>
                                     <% } %>
                                 </td>
-                                <td><%= moment(l.start).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td><%= moment.utc(l.start).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
                                 <td>
                                     <% if(l.end) { %>
-                                        <%= moment(l.end).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                        <%= moment.utc(l.end).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
                                     <% } else { %>
                                     ------
                                     <% } %>
