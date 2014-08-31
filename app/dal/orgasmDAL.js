@@ -105,6 +105,8 @@ var async = require('async');
             this.getSexPenalty(callback);
         } else if (type === 4) { // Prostate Massage
             callback(null, 0);
+        } else if (type === 5) { // Mutual Masturbation
+            this.getSexPenalty(callback);
         } else { // must be Masturbation
             callback(null, this.getMasturbationPenalty());
         }
