@@ -1,3 +1,5 @@
+var membershipFilters = require('../filters/membershipFilters');
+
 /**
  * homeController class
  */
@@ -16,9 +18,9 @@
      * @param  {express} app
      */
     HomeController.prototype.routes = function(app) {
-        app.get('/', this.index);
-        app.get('/home', this.index);
-        app.get('/home/index', this.index);
+        app.get('/', membershipFilters.authorize, this.index);
+        app.get('/home', membershipFilters.authorize, this.index);
+        app.get('/home/index', membershipFilters.authorize, this.index);
     };
 
     /**

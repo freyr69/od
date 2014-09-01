@@ -5,6 +5,7 @@
  */
 var ExerciseLogDAL = require('../dal/exerciseLogDAL');
 var csrfFilters = require('../filters/csrfFilters');
+var membershipFilters = require('../filters/membershipFilters');
 
 /**
  * exerciseLogController class

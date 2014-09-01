@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+
+            <div class="header">
+                <h3>Stats - About</h3>
+
+                <ul class="list-inline">
+                    <li class=""><a href="/stats/orgasm">Orgasms</a></li>
+                    <li class=""><a href="/stats/chastity">Chastity</a></li>
+                    <li class=""><a href="/stats/arousal">Arousal</a></li>
+                    <li class=""><a href="/stats/punishment">Punishments</a></li>
+                    <li class=""><a href="/stats/task">Tasks</a></li>
+                    <li class=""><a href="/stats/tease">Teases</a></li>
+                    <li class="active"><a href="/stats/slave">About</a></li>
+                </ul>
+            </div>
+
+            <div class="toppad2">
+                <h4>Slave Name:  <%- slaveName %></h4>
+                <p>Height:  <%- Math.floor(height/12) + " feet " + (height % 12) + " inches" %></p>
+                <p>Birthday:  <%- birthday %></p>
+                <p>Age:  <%- moment.utc().diff(moment.utc(birthday, "MM/DD/YYYY"), 'years') %></p>
+            </div>
+
+            <div class="toppad2">
+                <h4>Penis</h4>
+                
+                <p>
+                Classification:  <%- classification %>
+                </p>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th><%- slaveName %></th>
+                                <th>Average</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Erect Length</td>
+                                <td><%- averages.overall.erectLength.slave %>"</td>
+                                <td><%- averages.overall.erectLength.average %>"</td>
+                                <td><%- averages.overall.erectLength.percent %>%</td>
+                            </tr>
+                            <tr>
+                                <td>Erect Girth</td>
+                                <td><%- averages.overall.erectGirth.slave %>"</td>
+                                <td><%- averages.overall.erectGirth.average %>"</td>
+                                <td><%- averages.overall.erectGirth.percent %>%</td>
+                            </tr>
+                            <tr>
+                                <td>Erect Volume</td>
+                                <td><%- averages.overall.erectVolume.slave %>"&sup3;</td>
+                                <td><%- averages.overall.erectVolume.average %>"&sup3;</td>
+                                <td><%- averages.overall.erectVolume.percent %>%</td>
+                            </tr>
+                            <tr>
+                                <td>Flaccid Length</td>
+                                <td><%- averages.overall.flacidLength.slave %>"</td>
+                                <td><%- averages.overall.flacidLength.average %>"</td>
+                                <td><%- averages.overall.flacidLength.percent %>%</td>
+                            </tr>
+                            <tr>
+                                <td>Flaccid Girth</td>
+                                <td><%- averages.overall.flacidGirth.slave %>"</td>
+                                <td><%- averages.overall.flacidGirth.average %>"</td>
+                                <td><%- averages.overall.flacidGirth.percent %>%</td>
+                            </tr>
+                            <tr>
+                                <td>Flaccid Volume</td>
+                                <td><%- averages.overall.flacidVolume.slave %>"&sup3;</td>
+                                <td><%- averages.overall.flacidVolume.average %>"&sup3;</td>
+                                <td><%- averages.overall.flacidVolume.percent %>%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

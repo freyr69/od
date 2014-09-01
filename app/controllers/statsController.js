@@ -1,3 +1,4 @@
+var membershipFilters = require('../filters/membershipFilters');
 var OrgasmDAL = require('../dal/orgasmDAL');
 var OrgasmLogDAL = require('../dal/orgasmLogDAL');
 var ChatityLogDAL = require('../dal/chastityLogDAL');
@@ -5,6 +6,8 @@ var ArousalDAL = require('../dal/arousalDAL');
 var PunishmentLogDAL = require('../dal/punishmentLogDAL');
 var TaskLogDAL = require('../dal/taskLogDAL');
 var TeaseLogDAL = require('../dal/teaseLogDAL');
+var ProfileDAL = require('../dal/profileDAL');
+var PenisUtil = require('../lib/penisUtil');
 
 var async = require('async');
 var _ = require('lodash');
@@ -22,6 +25,8 @@ var moment = require('moment-timezone');
     var punishmentLogDAL = new PunishmentLogDAL();
     var taskLogDAL = new TaskLogDAL();
     var teaseLogDAL = new TeaseLogDAL();
+    var profileDAL = new ProfileDAL();
+    var penisUtil = new PenisUtil();
 
     /**
      * Constructor.
@@ -36,22 +41,15 @@ var moment = require('moment-timezone');
      * @param  {express} app
      */
     statsController.prototype.routes = function (app) {
-
+        app.all('/stats*', membershipFilters.authorize);
         app.get('/stats', this.orgasm);
-
         app.get('/stats/orgasm', this.orgasm);
-
         app.get('/stats/chastity', this.chastity);
-
         app.get('/stats/arousal', this.arousal);
-
         app.get('/stats/punishment', this.punishment);
-
         app.get('/stats/task', this.task);
-
         app.get('/stats/tease', this.tease);
-
-
+        app.get('/stats/slave', this.slave);
     };
 
 
@@ -108,7 +106,6 @@ var moment = require('moment-timezone');
                 nextDate: results.next,
                 days: days,
                 total: total,
-                moment: moment,
                 '_': _
             });
         });
@@ -157,7 +154,6 @@ var moment = require('moment-timezone');
                 max: results.max,
                 min: results.min,
                 total: results.total,
-                moment: moment,
                 '_': _
             });
         });
@@ -173,8 +169,7 @@ var moment = require('moment-timezone');
         arousalDAL.getAll(function (data) {
             res.render('stats/arousal', {
                 data: data,
-                '_': _,
-                'moment': moment
+                '_': _
             });
         });
     };
@@ -189,8 +184,7 @@ var moment = require('moment-timezone');
         punishmentLogDAL.getAll(function (data) {
             res.render('stats/punishment', {
                 data: data,
-                '_': _,
-                'moment': moment
+                '_': _
             });
         });
     };
@@ -205,8 +199,7 @@ var moment = require('moment-timezone');
         taskLogDAL.getAll(function (data) {
             res.render('stats/task', {
                 data: data,
-                '_': _,
-                'moment': moment
+                '_': _
             });
         });
     };
@@ -221,13 +214,41 @@ var moment = require('moment-timezone');
         teaseLogDAL.getAll(function (data) {
             res.render('stats/tease', {
                 data: data,
-                '_': _,
-                'moment': moment
+                '_': _
             });
         });
     };
 
 
+    statsController.prototype.slave = function(req, res) {
+        
+        profileDAL.get(req.user, function(data) {
+            var penisData = {
+                slaveName: data.slaveName,
+                birthday: data.birthday,
+                height: data.height,
+                erectLength: data.erectPenisLength,
+                flacidLength: data.flacidPenisLength,
+                erectGirth: data.erectPenisGirth,
+                flacidGirth: data.flacidPenisGirth
+            };
+            
+            penisUtil.setUserPenisData(penisData);
+            
+            var classification = penisUtil.getClassification();
+            console.log("classification:  " + classification);
+            var averages = penisUtil.calculateAll();
+            console.log("averages:  ", averages);
+            
+            res.render('stats/slave', {
+                'slaveName': data.slaveName,
+                'birthday': data.birthday,
+                'height': data.height,
+                'classification': classification,
+                'averages': averages
+            });
+        });
+    };
 
     module.exports = statsController;
 })();

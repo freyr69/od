@@ -7,6 +7,7 @@ var ChastityLogDAL = require('../dal/chastityLogDAL');
 var csrfFilters = require('../filters/csrfFilters');
 var membershipFilters = require('../filters/membershipFilters');
 var moment = require('moment-timezone');
+require('moment-duration-format');
 
 /**
  * chastityLogController class
@@ -50,8 +51,7 @@ var moment = require('moment-timezone');
             res.render('chastityLog/index', {
                 lastDate: chastityLog.end,
                 startDate: chastityLog.start,
-                inChastity: (chastityLog.end === null) ? true : false,
-                moment: moment
+                inChastity: (chastityLog.end === null) ? true : false
             });
         });
     };

@@ -6,6 +6,8 @@ var bcrypt = require('bcrypt-nodejs');
 var membershipFilters = require('../filters/membershipFilters');
 var csrfFilters = require('../filters/csrfFilters');
 var UserDal = require('../dal/userDal');
+var ProfileDal = require('../dal/profileDAL');
+var moment = require('moment');
 
 /**
  * Account controller class
@@ -16,6 +18,8 @@ var UserDal = require('../dal/userDal');
      * Attributes.
      */
     var userDal = new UserDal();
+    
+    var profileDal = new ProfileDal();
 
     /**
      * Constructor.
@@ -39,6 +43,8 @@ var UserDal = require('../dal/userDal');
         app.post('/account/changePassword', membershipFilters.authorize, this.changePassword_post);
         app.get('/account/register', csrfFilters.antiForgeryToken, this.register);
         app.post('/account/register', this.register_post);
+        app.get('/account/profile', membershipFilters.authorize, csrfFilters.antiForgeryToken, this.profile);
+        app.post('/account/profile', membershipFilters.authorize, this.profile_post);
     };
 
     /**
@@ -56,6 +62,28 @@ var UserDal = require('../dal/userDal');
     AccountController.prototype.logout = function(req, res) {
         req.logout();
         res.redirect('/');
+    };
+    
+    AccountController.prototype.profile = function(req, res) {
+        var user = req.user;
+        profileDal.get(user, function(profile) {
+            res.render('account/profile', {profile: profile});
+        });
+    };
+    
+    AccountController.prototype.profile_post = function(req, res) {
+        
+        var user = req.user;
+        console.log('user:  ' + user);
+        
+        var profile = req.body.profile;
+        console.log("saving profile:  " + profile);
+        
+        profileDal.save(user, profile, function(data) {
+            console.log("profile saved...");
+            res.redirect('/account/profile');
+            //req.flash('flash', 'Profile Updated');
+        });
     };
 
     /**

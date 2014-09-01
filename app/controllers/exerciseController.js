@@ -5,6 +5,7 @@
  */
 var ExerciseDAL = require('../dal/exerciseDAL');
 var csrfFilters = require('../filters/csrfFilters');
+var membershipFilters = require('../filters/membershipFilters');
 
 /**
  * exerciseController class
@@ -31,7 +32,7 @@ var csrfFilters = require('../filters/csrfFilters');
      * @returns {null}
      */
     ExerciseController.prototype.routes = function(app) {
-        app.all('/exercise*', csrfFilters.csrf);
+        app.all('/exercise*', membershipFilters.authorize, csrfFilters.csrf);
 
         app.get('/exercise', this.index);
         app.get('/exercise/new', csrfFilters.antiForgeryToken, this.new);

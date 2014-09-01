@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="widget">
+            <div class="header">
+                <h3>Food - Edit</h3>
+            </div>
+            <div class="toppad2">
+                <% form_for("profile", {controller: '/account', action: '/profile'}, function(f){ %>
+                
+                <%- f.hidden_field("id") %>
+                <%- hidden_field_tag("_csrf", {value: token}) %>
+                
+                <div class="control-group">
+                    <%- f.label_for("slaveName", {class : "control-label"}) %>
+                    <%- f.text_field("slaveName", {class: "form-control"}) %>
+                </div>
+                
+                <div class="control-group">
+                    <%- f.label_for("birthday", {class : "control-label"}) %>
+                    <%- f.text_field("birthday", {class: "form-control"}) %>
+                </div>
+                
+                <div class="control-group">
+                    <%- f.label_for("height", {class : "control-label"}) %>
+                    <%- f.text_field("height", {class: "form-control"}) %>
+                </div>
+                
+                <div class="control-group">
+                    <%- f.label_for("erectPenisLength", {class : "control-label"}) %>
+                    <%- f.text_field("erectPenisLength", {class: "form-control"}) %>
+                </div>
+                
+                <div class="control-group">
+                    <%- f.label_for("erectPenisGirth", {class : "control-label"}) %>
+                    <%- f.text_field("erectPenisGirth", {class: "form-control"}) %>
+                </div>
+                
+                <div class="control-group">
+                    <%- f.label_for("flacidPenisLength", {class : "control-label"}) %>
+                    <%- f.text_field("flacidPenisLength", {class: "form-control"}) %>
+                </div>
+                
+                <div class="control-group">
+                    <%- f.label_for("flacidPenisGirth", {class : "control-label"}) %>
+                    <%- f.text_field("flacidPenisGirth", {class: "form-control"}) %>
+                </div>
+
+                <%- f.submit("Edit Profile", {class : 'btn btn-warning'}) %>
+                <% }) %>
+
+
+            </div>
+        </div>        
+    </div>
+</div>

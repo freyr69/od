@@ -34,6 +34,8 @@
         this.foodLog = this.db.import(modelsPath + 'foodLog');
         this.exercise = this.db.import(modelsPath + 'exercise');
         this.exerciseLog = this.db.import(modelsPath + 'exerciseLog');
+        this.variable = this.db.import(modelsPath + 'variable');
+        this.health = this.db.import(modelsPath + 'health');
     };
 
     /**
@@ -42,6 +44,9 @@
     DbContext.prototype.modelBuilder = function() {
         this.food.hasMany(this.foodLog, {as: "FoodLogs"});
         this.foodLog.belongsTo(this.food);
+        
+        this.user.hasMany(this.variable, {as: "Variables"});
+        this.variable.belongsTo(this.user);
     };
 
     module.exports = DbContext;

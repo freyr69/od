@@ -6,6 +6,7 @@
 var FoodLogDAL = require('../dal/foodLogDAL');
 var FoodDAL = require('../dal/foodDAL');
 var csrfFilters = require('../filters/csrfFilters');
+var membershipFilters = require('../filters/membershipFilters');
 var async = require('async');
 var moment = require('moment-timezone');
 
@@ -33,7 +34,7 @@ var moment = require('moment-timezone');
      * @param {app} - express app.
      */
     FoodLogController.prototype.routes = function(app) {
-        app.all('/foodLog*', csrfFilters.csrf);
+        app.all('/foodLog*', membershipFilters.authorize, csrfFilters.csrf);
 
         app.get('/foodLog', csrfFilters.antiForgeryToken, this.index);
         app.post('/foodLog/create', this.create);
@@ -76,8 +77,7 @@ var moment = require('moment-timezone');
             res.render('foodLog/index', {
                 foodLogs: results.foodLogs,
                 foods: results.foods,
-                points: results.points[0].points,
-                moment: moment
+                points: results.points[0].points
             });
         });
     };
@@ -93,9 +93,7 @@ var moment = require('moment-timezone');
 
         foodDAL.getByName(foodName, function(food) {
             foodLogDAL.addFood(food, function(data) {
-                res.redirect('/foodLog', {
-                    moment: moment
-                });
+                res.redirect('/foodLog', {});
             });
         });
     };
@@ -109,7 +107,7 @@ var moment = require('moment-timezone');
     FoodLogController.prototype.delete = function(req, res) {
         var foodLogId = req.params.id;
         foodLogDAL.get(foodLogId, function(foodLog) {
-            res.render('foodLog/delete', {'foodLog': foodLog, moment: moment});
+            res.render('foodLog/delete', {'foodLog': foodLog});
         });
     };
 
@@ -122,7 +120,7 @@ var moment = require('moment-timezone');
     FoodLogController.prototype.destroy = function(req, res) {
         var foodLog = req.body.foodLog;
         foodLogDAL.remove(foodLog.id, function(data) {
-            res.redirect('/foodLog', {moment: moment});
+            res.redirect('/foodLog', {});
         });
     };
 

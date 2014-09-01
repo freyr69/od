@@ -70,8 +70,7 @@ var moment = require('moment-timezone');
                 nextDate: results.next,
                 days: days,
                 total: total,
-                pct: pct,
-                moment: moment
+                pct: pct
             });
         });
     };

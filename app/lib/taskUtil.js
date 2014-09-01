@@ -1,23 +1,21 @@
 var php = require('phpjs');
 var _ = require('lodash');
 
-(function() {
+(function () {
 
-    function TaskUtil() {
-    }
-    ;
+    function TaskUtil() {};
 
-    TaskUtil.prototype.getSeverity = function() {
+    TaskUtil.prototype.getSeverity = function () {
         return php.rand(1, 10);
     };
 
 
-    TaskUtil.prototype.parseExpressions = function(msg, severity) {
+    TaskUtil.prototype.parseExpressions = function (msg, severity) {
         match = msg.match(/%%[^%]*%%/g);
         //console.log(match);
         if (match) {
             if (match.length > 0) {
-                match.forEach(function(data) {
+                match.forEach(function (data) {
                     var m = data;
                     //console.log("original text = " + m);
                     data = data.replace(/%/g, "");
@@ -35,7 +33,7 @@ var _ = require('lodash');
 
                     var rval = "";
                     if (method === 'DATERANGE') {
-                        rval = (phpjs.rand(1, 24) * (severity * multiplier)) + " hours";
+                        rval = (php.rand(1, 24) * (severity * multiplier)) + " hours";
                     } else if (method === 'NUMBER') {
                         rval = severity * multiplier;
                     }

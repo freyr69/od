@@ -13,7 +13,7 @@
 
                         <% if (inChastity) { %>
                         <p>
-                            You've been in chastity for about <%= moment.utc(startDate).tz('America/New_York').fromNow(true) %>.
+                            You've been in chastity for <%= formatInterval(startDate, moment.utc()) %>.
                         </p>
                         <p>
                             <a class="btn btn-warning" href="/chastity/stop">Stop</a>
@@ -25,7 +25,7 @@
                         </p>
                         <% } else { %>
                         <p>
-                            Looks like you've been out of chastity for about <%= moment.utc(lastDate).tz('America/New_York').fromNow(true) %>.
+                            Looks like you've been out of chastity for <%= formatInterval(lastDate, moment.utc()) %>.
                         </p>
                         <% } %>
 

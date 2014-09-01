@@ -12,13 +12,14 @@
                     <li class=""><a href="/stats/punishment">Punishments</a></li>
                     <li class=""><a href="/stats/task">Tasks</a></li>
                     <li class=""><a href="/stats/tease">Teases</a></li>
+                    <li class=""><a href="/stats/slave">About</a></li>
                 </ul>
             </div>
 
             <div class="well toppad2">
                 <p>
-                    Your last orgasm was <strong><%= moment.utc(lastDate).tz('America/New_York').fromNow() %></strong> 
-                    and occurred on <strong><%= moment(lastDate).format("YYYY/MM/DD hh:mm:ss") %></strong>.
+                    Your last orgasm was <strong><%= formatInterval(lastDate, null, true) %></strong> 
+                    and occurred on <strong><%= formatDate(lastDate) %></strong>.
                 </p>
                 <p>
                     When you have your next scheduled orgasm, you will have gone a total of <strong><%= total %></strong> days without an cumming.
@@ -98,8 +99,8 @@
                                     <%= l.type %>
                                     <% } %>
                                 </td>
-                                <td><%= moment.utc(l.date).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
-                                <td><%= moment.utc(l.date).tz('America/New_York').fromNow() %></td>
+                                <td><%= formatDate(l.date) %></td>
+                                <td><%= formatInterval(l.date, null, true) %></td>
                             </tr>
                             <% }) %>
                         </tbody>

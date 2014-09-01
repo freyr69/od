@@ -7,7 +7,7 @@
             <div class="toppad2">
                 <% form_for("food", {controller: '/food', action: '/edit'}, function(f){ %>
 
-                <%- f.hidden_field("id") %>
+                <%- f.hidden_field("date") %>
                 <%- hidden_field_tag("_csrf", {value: token}) %>
 
 

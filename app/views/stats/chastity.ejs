@@ -12,6 +12,7 @@
                     <li class=""><a href="/stats/punishment">Punishments</a></li>
                     <li class=""><a href="/stats/task">Tasks</a></li>
                     <li class=""><a href="/stats/tease">Teases</a></li>
+                    <li class=""><a href="/stats/slave">About</a></li>
                 </ul>
             </div>
 
@@ -40,16 +41,17 @@
                         <tbody>
                             <% _.each(data, function(l) { %>
                             <tr>
-                                <td><%= moment.utc(l.start).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td><%= formatDate(l.start) %></td>
                                 <td>
                                     <% if(l.end) { %>
-                                        <%= moment.utc(l.end).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                        <%= formatDate(l.end) %>
                                     <% } else { %>
                                     ------
                                     <% } %>
+                                </td>
                                 <td>
                                     <% if(l.end) { %>
-                                    <%= moment.duration(moment.utc(l.end).diff(moment.utc(l.start))).humanize() %>
+                                    <%= formatInterval(l.start, l.end) %>
                                     <% } else { %>
                                     Ongoing
                                     <% } %>

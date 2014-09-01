@@ -3,8 +3,8 @@
  */
 exports.authorize = function(req, res, next) {
     
-    console.log("bypassing authentication...");
-    return next();
+    //console.log("bypassing authentication...");
+    //return next();
     
     if (req.isAuthenticated()) {
         console.log('user isAuthenticated');

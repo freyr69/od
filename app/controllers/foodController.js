@@ -5,6 +5,7 @@
  */
 var FoodDAL = require('../dal/foodDAL');
 var csrfFilters = require('../filters/csrfFilters');
+var membershipFilters = require('../filters/membershipFilters');
 
 /**
  * foodController class
@@ -29,7 +30,7 @@ var csrfFilters = require('../filters/csrfFilters');
      * @param {app} - express app.
      */
     FoodController.prototype.routes = function(app) {
-        app.all('/food*', csrfFilters.csrf);
+        app.all('/food*', membershipFilters.authorize, csrfFilters.csrf);
 
         app.get('/food', this.index);
         app.get('/food/new', csrfFilters.antiForgeryToken, this.new);

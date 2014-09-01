@@ -13,6 +13,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var Membership = require('./middleware/membership');
 
+var moment = require('moment-timezone');
+require('moment-duration-format');
+
 /**
  * Application class.
  */
@@ -48,6 +51,7 @@ var Application = (function() {
         var thatapp = this.app;
 
         this.app.locals({
+            moment: moment, // adding this so that moment is accessable in all of the view scripts...
             scripts: [],
             inlineScripts: [],
             renderScriptsTags: function(all) {
@@ -75,6 +79,28 @@ var Application = (function() {
             },
             getInlineScripts: function(req, res) {
                 return inlineScripts;
+            },
+            formatInterval: function(start, end, shortFormat) {
+                if(end === undefined || end === null) {
+                    end = moment.utc();
+                }
+                
+                var format = "M [months] d [days] h [hours] m [minutes]";
+                if (shortFormat) {
+                    format = "M [months] d [days] h [hours]";
+                }
+                
+                var duration = moment.utc(end).diff(moment.utc(start), 'seconds');
+                var durationString = 'a few seconds';
+            
+                if (duration > 60) {
+                    durationString = moment.duration(duration, 'seconds').format(format);
+                }
+                
+                return durationString;
+            },
+            formatDate: function(datetime) {
+                return moment.utc(datetime).tz('America/New_York').format("MM/DD/YYYY hh:mm:ss")
             }
         });
 

@@ -6,7 +6,6 @@
 var ArousalDAL = require('../dal/arousalDAL');
 var csrfFilters = require('../filters/csrfFilters');
 var membershipFilters = require('../filters/membershipFilters');
-var moment = require('moment-timezone');
 
 /**
  * arousalController class
@@ -46,7 +45,7 @@ var moment = require('moment-timezone');
     ArousalController.prototype.index = function(req, res) {
         arousalDAL.getLatest(function(arousal) {
             console.log("latest arousal level", arousal);
-            res.render('arousal/index', {'arousal': arousal, moment: moment});
+            res.render('arousal/index', {'arousal': arousal});
         });
     };
 

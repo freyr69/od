@@ -12,6 +12,7 @@
                     <li class=""><a href="/stats/punishment">Punishments</a></li>
                     <li class=""><a href="/stats/task">Tasks</a></li>
                     <li class=""><a href="/stats/tease">Teases</a></li>
+                    <li class=""><a href="/stats/slave">About</a></li>
                 </ul>
             </div>
 
@@ -51,7 +52,7 @@
                             %> 
 
                             <tr>
-                                <td><%= moment.utc(l.date).tz('America/New_York').format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+                                <td><%= formatDate(l.date) %></td>
                                 <td><span class="label label-<%= code %>"><%= l.level %></span></td>
                             </tr>
                             <% }) %>
