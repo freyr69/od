@@ -56,9 +56,13 @@ var _ = require('lodash');
         return "unknown";
     };
 
-    PenisUtil.prototype.getErectDetails = function () {};
+    PenisUtil.prototype.getErectDetails = function () {
+        return "Your penis is shorter than the average cock, but you are at least a little thicker than the average cock of modest size.  Your ratio (lenth / girth) is 1.09.  The average is around 1.2";
+    };
 
-    PenisUtil.prototype.getFlacidDetails = function () {};
+    PenisUtil.prototype.getFlacidDetails = function () {
+        return "When soft, your penis is a lot less than average in volume.  Your soft to hard ratio is 357%.   Definitely a grower!";
+    };
 
     PenisUtil.prototype.calculateAll = function () {
         var data = {
